@@ -63,7 +63,11 @@ export async function loadRegistry(): Promise<ComponentRegistry> {
 export async function getComponent(name: string): Promise<Component | null> {
   const registry = await loadRegistry();
   return registry.find(component => 
-    component.name.toLowerCase() === name.toLowerCase()
+    component.name.toLowerCase() === name.toLowerCase() ||
+    // Also match by CLI command (e.g., "copy-button" matches "CopyButton")
+    component.cli.toLowerCase().includes(name.toLowerCase()) ||
+    // Convert PascalCase to kebab-case for matching
+    component.name.replace(/([A-Z])/g, '-$1').toLowerCase().slice(1) === name.toLowerCase()
   ) || null;
 }
 
