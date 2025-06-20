@@ -71,7 +71,19 @@ import {
   SheetFooter,
   SheetClose
 } from "@/components/ui/common/sheet";
-import { ChevronLeft, ChevronRight, RefreshCw, MoreHorizontal, Settings, User, LogOut, Mail, Phone, MapPin, Calendar, ChevronDown, ChevronRight as ChevronRightIcon, Info, Heart, Star, HelpCircle, Search, Eye, EyeOff, Home, FileText, Users, BarChart3, Cog, Menu } from "lucide-react";
+import { Switch } from "@/components/ui/common/switch";
+import {
+  Tabs,
+  TabsList,
+  TabsTrigger,
+  TabsContent,
+  TabsContents
+} from "@/components/ui/common/tabs";
+import {
+  ToggleGroup,
+  ToggleGroupItem
+} from "@/components/ui/common/toggle-group";
+import { ChevronLeft, ChevronRight, RefreshCw, MoreHorizontal, Settings, User, LogOut, Mail, Phone, MapPin, Calendar, ChevronDown, ChevronRight as ChevronRightIcon, Info, Heart, Star, HelpCircle, Search, Eye, EyeOff, Home, FileText, Users, BarChart3, Cog, Menu, Moon, Sun, Volume2, VolumeX, Wifi, Bold, Italic, Underline, AlignLeft, AlignCenter, AlignRight } from "lucide-react";
 
 const navigationItems = [
   { id: 'components', label: 'Components', section: 'components', isHeader: true },
@@ -91,6 +103,9 @@ const navigationItems = [
   { id: 'popover', label: 'Popover', section: 'components' },
   { id: 'sheet', label: 'Sheet', section: 'components' },
   { id: 'sidebar', label: 'Sidebar', section: 'components' },
+  { id: 'switch', label: 'Switch', section: 'components' },
+  { id: 'tabs', label: 'Tabs', section: 'components' },
+  { id: 'toggle-group', label: 'Toggle Group', section: 'components' },
 ];
 
 export default function CommonPage() {
@@ -106,6 +121,17 @@ export default function CommonPage() {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [progressValue, setProgressValue] = useState(65);
   const [radioValue, setRadioValue] = useState("option1");
+  const [switchStates, setSwitchStates] = useState({
+    notifications: true,
+    darkMode: false,
+    sound: true,
+    wifi: true
+  });
+  const [activeTab, setActiveTab] = useState("account");
+  const [toggleGroupValues, setToggleGroupValues] = useState({
+    single: "bold",
+    multiple: ["bold"]
+  });
 
   const scrollToSection = (sectionId: string) => {
     setActiveSection(sectionId);
@@ -1153,6 +1179,221 @@ export default function CommonPage() {
                               This is a static demo of the sidebar component
                             </p>
                           </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Switch */}
+          <section id="switch" className="space-y-6">
+            <div>
+              <h2 className="text-xl font-semibold mb-4">Switch</h2>
+              <p className="text-muted-foreground mb-6">
+                Animated toggle switch with smooth transitions and optional icons.
+              </p>
+              
+              <div className="border rounded-lg bg-card">
+                <div className="h-80 md:h-96 flex flex-wrap gap-8 items-center justify-center p-8">
+                  <div className="space-y-6 w-full max-w-md" key={`switch-${refreshKey}`}>
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between">
+                        <Label htmlFor="notifications-switch">Enable notifications</Label>
+                        <Switch
+                          id="notifications-switch"
+                          checked={switchStates.notifications}
+                          onCheckedChange={(checked) => 
+                            setSwitchStates(prev => ({ ...prev, notifications: checked }))
+                          }
+                        />
+                      </div>
+
+                      <div className="flex items-center justify-between">
+                        <Label htmlFor="dark-mode-switch">Dark mode</Label>
+                        <Switch
+                          id="dark-mode-switch"
+                          checked={switchStates.darkMode}
+                          onCheckedChange={(checked) => 
+                            setSwitchStates(prev => ({ ...prev, darkMode: checked }))
+                          }
+                          leftIcon={<Moon className="h-3 w-3" />}
+                          rightIcon={<Sun className="h-3 w-3" />}
+                        />
+                      </div>
+
+                      <div className="flex items-center justify-between">
+                        <Label htmlFor="sound-switch">Sound effects</Label>
+                        <Switch
+                          id="sound-switch"
+                          checked={switchStates.sound}
+                          onCheckedChange={(checked) => 
+                            setSwitchStates(prev => ({ ...prev, sound: checked }))
+                          }
+                          leftIcon={<Volume2 className="h-3 w-3" />}
+                          rightIcon={<VolumeX className="h-3 w-3" />}
+                        />
+                      </div>
+
+                      <div className="flex items-center justify-between">
+                        <Label htmlFor="wifi-switch">Wi-Fi</Label>
+                        <Switch
+                          id="wifi-switch"
+                          checked={switchStates.wifi}
+                          onCheckedChange={(checked) => 
+                            setSwitchStates(prev => ({ ...prev, wifi: checked }))
+                          }
+                          thumbIcon={<Wifi className="h-3 w-3" />}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Tabs */}
+          <section id="tabs" className="space-y-6">
+            <div>
+              <h2 className="text-xl font-semibold mb-4">Tabs</h2>
+              <p className="text-muted-foreground mb-6">
+                Animated tab navigation with smooth transitions and highlight indicators.
+              </p>
+              
+              <div className="border rounded-lg bg-card">
+                <div className="h-80 md:h-96 flex flex-wrap gap-8 items-center justify-center p-8">
+                  <div className="space-y-6 w-full max-w-md" key={`tabs-${refreshKey}`}>
+                    <Tabs value={activeTab} onValueChange={setActiveTab}>
+                      <TabsList>
+                        <TabsTrigger value="account">Account</TabsTrigger>
+                        <TabsTrigger value="password">Password</TabsTrigger>
+                        <TabsTrigger value="settings">Settings</TabsTrigger>
+                      </TabsList>
+                      
+                      <TabsContents>
+                        <TabsContent value="account">
+                          <div className="space-y-4">
+                            <h3 className="text-lg font-medium">Account Information</h3>
+                            <div className="space-y-2">
+                              <Label htmlFor="name">Full Name</Label>
+                              <Input id="name" placeholder="Enter your full name" />
+                            </div>
+                            <div className="space-y-2">
+                              <Label htmlFor="email-tab">Email</Label>
+                              <Input id="email-tab" type="email" placeholder="Enter your email" />
+                            </div>
+                          </div>
+                        </TabsContent>
+                        
+                        <TabsContent value="password">
+                          <div className="space-y-4">
+                            <h3 className="text-lg font-medium">Change Password</h3>
+                            <div className="space-y-2">
+                              <Label htmlFor="current-password">Current Password</Label>
+                              <Input id="current-password" type="password" placeholder="Enter current password" />
+                            </div>
+                            <div className="space-y-2">
+                              <Label htmlFor="new-password">New Password</Label>
+                              <Input id="new-password" type="password" placeholder="Enter new password" />
+                            </div>
+                          </div>
+                        </TabsContent>
+                        
+                        <TabsContent value="settings">
+                          <div className="space-y-4">
+                            <h3 className="text-lg font-medium">Preferences</h3>
+                            <div className="space-y-4">
+                              <div className="flex items-center justify-between">
+                                <Label>Email notifications</Label>
+                                <Switch />
+                              </div>
+                              <div className="flex items-center justify-between">
+                                <Label>Marketing emails</Label>
+                                <Switch />
+                              </div>
+                            </div>
+                          </div>
+                        </TabsContent>
+                      </TabsContents>
+                    </Tabs>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Toggle Group */}
+          <section id="toggle-group" className="space-y-6">
+            <div>
+              <h2 className="text-xl font-semibold mb-4">Toggle Group</h2>
+              <p className="text-muted-foreground mb-6">
+                Group of toggle buttons with single or multiple selection modes and smooth animations.
+              </p>
+              
+              <div className="border rounded-lg bg-card">
+                <div className="h-80 md:h-96 flex flex-wrap gap-8 items-center justify-center p-8">
+                  <div className="space-y-6 w-full max-w-md" key={`toggle-group-${refreshKey}`}>
+                    <div className="space-y-4">
+                      <div className="space-y-2">
+                        <Label>Text Formatting (Single)</Label>
+                        <ToggleGroup
+                          type="single"
+                          value={toggleGroupValues.single}
+                          onValueChange={(value) => 
+                            setToggleGroupValues(prev => ({ ...prev, single: value }))
+                          }
+                        >
+                          <ToggleGroupItem value="bold">
+                            <Bold className="h-4 w-4" />
+                          </ToggleGroupItem>
+                          <ToggleGroupItem value="italic">
+                            <Italic className="h-4 w-4" />
+                          </ToggleGroupItem>
+                          <ToggleGroupItem value="underline">
+                            <Underline className="h-4 w-4" />
+                          </ToggleGroupItem>
+                        </ToggleGroup>
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label>Text Alignment (Multiple)</Label>
+                        <ToggleGroup
+                          type="multiple"
+                          value={toggleGroupValues.multiple}
+                          onValueChange={(value) => 
+                            setToggleGroupValues(prev => ({ ...prev, multiple: value }))
+                          }
+                        >
+                          <ToggleGroupItem value="left">
+                            <AlignLeft className="h-4 w-4" />
+                          </ToggleGroupItem>
+                          <ToggleGroupItem value="center">
+                            <AlignCenter className="h-4 w-4" />
+                          </ToggleGroupItem>
+                          <ToggleGroupItem value="right">
+                            <AlignRight className="h-4 w-4" />
+                          </ToggleGroupItem>
+                        </ToggleGroup>
+                      </div>
+
+                      <div className="space-y-2">
+                        <Label>Size Variants</Label>
+                        <div className="space-y-2">
+                          <ToggleGroup type="single" size="sm">
+                            <ToggleGroupItem value="small1">Small</ToggleGroupItem>
+                            <ToggleGroupItem value="small2">Size</ToggleGroupItem>
+                          </ToggleGroup>
+                          <ToggleGroup type="single" size="default">
+                            <ToggleGroupItem value="default1">Default</ToggleGroupItem>
+                            <ToggleGroupItem value="default2">Size</ToggleGroupItem>
+                          </ToggleGroup>
+                          <ToggleGroup type="single" size="lg">
+                            <ToggleGroupItem value="large1">Large</ToggleGroupItem>
+                            <ToggleGroupItem value="large2">Size</ToggleGroupItem>
+                          </ToggleGroup>
                         </div>
                       </div>
                     </div>

@@ -677,5 +677,99 @@
     },
     "example": "<SidebarProvider><Sidebar><SidebarContent><SidebarGroup><SidebarGroupContent><SidebarMenu><SidebarMenuItem><SidebarMenuButton>Item</SidebarMenuButton></SidebarMenuItem></SidebarMenu></SidebarGroupContent></SidebarGroup></SidebarContent></Sidebar><SidebarInset>Main content</SidebarInset></SidebarProvider>",
     "version": "1.0.0"
+  },
+  {
+    "name": "MotionHighlight",
+    "category": "effects",
+    "description": "Animated highlight system for creating smooth transitions between active states with customizable modes and behaviors.",
+    "cli": "npx @notacoder15/ak-ui-cli add motion-highlight",
+    "import": "@/components/ui/effects/motion-highlight",
+    "export": "MotionHighlight, MotionHighlightItem, useMotionHighlight",
+    "props": {
+      "mode": { "type": "enum", "values": ["children", "parent"], "default": "children" },
+      "value": { "type": "string | null" },
+      "defaultValue": { "type": "string | null" },
+      "onValueChange": { "type": "function" },
+      "className": { "type": "string" },
+      "activeClassName": { "type": "string" },
+      "transition": { "type": "object", "default": "{ type: 'spring', stiffness: 350, damping: 35 }" },
+      "hover": { "type": "boolean", "default": false },
+      "disabled": { "type": "boolean", "default": false },
+      "enabled": { "type": "boolean", "default": true },
+      "exitDelay": { "type": "number", "default": 0.2 },
+      "controlledItems": { "type": "boolean" },
+      "boundsOffset": { "type": "object" },
+      "containerClassName": { "type": "string" },
+      "forceUpdateBounds": { "type": "boolean" },
+      "asChild": { "type": "boolean", "default": false }
+    },
+    "example": "<MotionHighlight><MotionHighlightItem value=\"item1\"><button>Item 1</button></MotionHighlightItem><MotionHighlightItem value=\"item2\"><button>Item 2</button></MotionHighlightItem></MotionHighlight>",
+    "version": "1.0.0"
+  },
+  {
+    "name": "Switch",
+    "category": "common",
+    "description": "Animated toggle switch with smooth transitions, optional icons, and customizable thumb interactions.",
+    "cli": "npx @notacoder15/ak-ui-cli add switch",
+    "import": "@/components/ui/common/switch",
+    "export": "Switch",
+    "props": {
+      "checked": { "type": "boolean" },
+      "defaultChecked": { "type": "boolean" },
+      "onCheckedChange": { "type": "function" },
+      "disabled": { "type": "boolean", "default": false },
+      "required": { "type": "boolean", "default": false },
+      "name": { "type": "string" },
+      "value": { "type": "string" },
+      "leftIcon": { "type": "React.ReactNode" },
+      "rightIcon": { "type": "React.ReactNode" },
+      "thumbIcon": { "type": "React.ReactNode" },
+      "className": { "type": "string" }
+    },
+    "example": "<Switch checked={true} onCheckedChange={(checked) => console.log(checked)} leftIcon={<Moon />} rightIcon={<Sun />} />",
+    "version": "1.0.0"
+  },
+  {
+    "name": "Tabs",
+    "category": "common",
+    "description": "Animated tab navigation with smooth transitions, motion highlights, and dynamic content sizing.",
+    "cli": "npx @notacoder15/ak-ui-cli add tabs",
+    "import": "@/components/ui/common/tabs",
+    "export": "Tabs, TabsList, TabsTrigger, TabsContent, TabsContents",
+    "dependencies": ["@/components/ui/effects/motion-highlight"],
+    "props": {
+      "value": { "type": "string" },
+      "defaultValue": { "type": "string" },
+      "onValueChange": { "type": "function" },
+      "orientation": { "type": "enum", "values": ["horizontal", "vertical"], "default": "horizontal" },
+      "dir": { "type": "enum", "values": ["ltr", "rtl"] },
+      "activationMode": { "type": "enum", "values": ["automatic", "manual"], "default": "automatic" },
+      "activeClassName": { "type": "string" },
+      "transition": { "type": "object", "default": "{ type: 'spring', stiffness: 200, damping: 25 }" }
+    },
+    "example": "<Tabs value={activeTab} onValueChange={setActiveTab}><TabsList><TabsTrigger value=\"tab1\">Tab 1</TabsTrigger><TabsTrigger value=\"tab2\">Tab 2</TabsTrigger></TabsList><TabsContents><TabsContent value=\"tab1\">Content 1</TabsContent><TabsContent value=\"tab2\">Content 2</TabsContent></TabsContents></Tabs>",
+    "version": "1.0.0"
+  },
+  {
+    "name": "ToggleGroup",
+    "category": "common",
+    "description": "Toggle button group with single/multiple selection modes, animated highlights, and customizable variants.",
+    "cli": "npx @notacoder15/ak-ui-cli add toggle-group",
+    "import": "@/components/ui/common/toggle-group",
+    "export": "ToggleGroup, ToggleGroupItem",
+    "props": {
+      "type": { "type": "enum", "values": ["single", "multiple"], "default": "single" },
+      "value": { "type": "string | string[]" },
+      "defaultValue": { "type": "string | string[]" },
+      "onValueChange": { "type": "function" },
+      "disabled": { "type": "boolean", "default": false },
+      "variant": { "type": "enum", "values": ["default", "outline"], "default": "default" },
+      "size": { "type": "enum", "values": ["default", "sm", "lg"], "default": "default" },
+      "transition": { "type": "object", "default": "{ type: 'spring', bounce: 0, stiffness: 200, damping: 25 }" },
+      "activeClassName": { "type": "string" },
+      "className": { "type": "string" }
+    },
+    "example": "<ToggleGroup type=\"single\" value={value} onValueChange={setValue}><ToggleGroupItem value=\"bold\"><Bold /></ToggleGroupItem><ToggleGroupItem value=\"italic\"><Italic /></ToggleGroupItem></ToggleGroup>",
+    "version": "1.0.0"
   }
 ] 

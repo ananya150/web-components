@@ -217,6 +217,18 @@ export function getNpmDependencies(component: Component): string[] {
     case 'Sidebar':
       dependencies.push('motion', '@radix-ui/react-slot', 'class-variance-authority', 'lucide-react');
       break;
+    case 'Switch':
+      dependencies.push('motion', '@radix-ui/react-switch');
+      break;
+    case 'Tabs':
+      dependencies.push('motion', '@radix-ui/react-tabs');
+      break;
+    case 'ToggleGroup':
+      dependencies.push('motion', '@radix-ui/react-toggle-group', 'class-variance-authority');
+      break;
+    case 'MotionHighlight':
+      dependencies.push('motion');
+      break;
     default:
       break;
   }
