@@ -138,6 +138,15 @@ export function getNpmDependencies(component: Component): string[] {
     case 'SlidingNumber':
       dependencies.push('motion', 'react-use-measure');
       break;
+    case 'AvatarGroup':
+      dependencies.push('motion');
+      break;
+    case 'CodeEditor':
+      dependencies.push('motion', 'shiki', 'next-themes');
+      break;
+    case 'Tooltip':
+      dependencies.push('motion');
+      break;
     default:
       break;
   }

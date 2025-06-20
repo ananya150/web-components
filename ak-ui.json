@@ -187,5 +187,75 @@
     },
     "example": "<SlidingNumber number={1234} />",
     "version": "1.0.0"
+  },
+  {
+    "name": "AvatarGroup",
+    "category": "custom",
+    "description": "Display a collection of avatars in an overlapping group layout with hover animations and tooltips.",
+    "cli": "npx @notacoder15/ak-ui-cli add avatar-group",
+    "import": "@/components/ui/custom/avatar-group",
+    "export": "AvatarGroup, AvatarGroupTooltip",
+    "dependencies": ["@/components/ui/tooltip/tooltip"],
+    "props": {
+      "children": "React.ReactElement[]",
+      "transition": { "type": "object", "default": "{ type: 'spring', stiffness: 300, damping: 17 }" },
+      "invertOverlap": { "type": "boolean", "default": false },
+      "translate": { "type": "string | number", "default": "'-30%'" },
+      "tooltipProps": { "type": "object", "default": "{ side: 'top', sideOffset: 24 }" },
+      "className": "string"
+    },
+    "example": "<AvatarGroup><div><Avatar src=\"...\" alt=\"User\" /><AvatarGroupTooltip>John Doe</AvatarGroupTooltip></div></AvatarGroup>",
+    "version": "1.0.0"
+  },
+  {
+    "name": "CodeEditor",
+    "category": "custom",
+    "description": "An animated code editor with syntax highlighting, typing animation, and copy functionality.",
+    "cli": "npx @notacoder15/ak-ui-cli add code-editor",
+    "import": "@/components/ui/custom/code-editor",
+    "export": "CodeEditor",
+    "dependencies": ["@/components/ui/buttons/copy"],
+    "props": {
+      "children": "string",
+      "lang": "string",
+      "themes": { "type": "object", "default": "{ light: 'github-light', dark: 'github-dark' }" },
+      "duration": { "type": "number", "default": 5 },
+      "delay": { "type": "number", "default": 0 },
+      "header": { "type": "boolean", "default": true },
+      "dots": { "type": "boolean", "default": true },
+      "icon": "React.ReactNode",
+      "cursor": { "type": "boolean", "default": false },
+      "inView": { "type": "boolean", "default": false },
+      "inViewMargin": "string",
+      "inViewOnce": { "type": "boolean", "default": true },
+      "copyButton": { "type": "boolean", "default": false },
+      "writing": { "type": "boolean", "default": true },
+      "title": "string",
+      "onDone": "function",
+      "onCopy": "function",
+      "className": "string"
+    },
+    "example": "<CodeEditor lang=\"tsx\" title=\"component.tsx\" cursor copyButton>{`const Component = () => <div>Hello</div>;`}</CodeEditor>",
+    "version": "1.0.0"
+  },
+  {
+    "name": "Tooltip",
+    "category": "custom",
+    "description": "A flexible tooltip system with animations, positioning, and global state management.",
+    "cli": "npx @notacoder15/ak-ui-cli add tooltip",
+    "import": "@/components/ui/tooltip/tooltip",
+    "export": "TooltipProvider, Tooltip, TooltipContent, TooltipTrigger",
+    "props": {
+      "side": { "type": "enum", "values": ["top", "bottom", "left", "right"], "default": "top" },
+      "sideOffset": { "type": "number", "default": 14 },
+      "align": { "type": "enum", "values": ["start", "center", "end"], "default": "center" },
+      "alignOffset": { "type": "number", "default": 0 },
+      "openDelay": { "type": "number", "default": 700 },
+      "closeDelay": { "type": "number", "default": 300 },
+      "transition": { "type": "object", "default": "{ type: 'spring', stiffness: 300, damping: 25 }" },
+      "arrow": { "type": "boolean", "default": true }
+    },
+    "example": "<TooltipProvider><Tooltip><TooltipTrigger><button>Hover me</button></TooltipTrigger><TooltipContent>Tooltip text</TooltipContent></Tooltip></TooltipProvider>",
+    "version": "1.0.0"
   }
 ] 
