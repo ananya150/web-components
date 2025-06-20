@@ -235,7 +235,7 @@ All components use `@/` path aliases. Make sure your `tsconfig.json` includes:
 ### Basic Button Usage
 
 ```tsx
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/buttons/button"
 
 export default function Example() {
   return (

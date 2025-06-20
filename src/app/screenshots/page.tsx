@@ -1,6 +1,6 @@
 'use client';
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/buttons/button";
 import { CopyButton } from "@/components/ui/buttons/copy";
 import { FlipButton } from "@/components/ui/buttons/flip";
 import { GitHubStarsButton } from "@/components/ui/buttons/github-stars";

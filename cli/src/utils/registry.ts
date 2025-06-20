@@ -169,6 +169,24 @@ export function getNpmDependencies(component: Component): string[] {
     case 'CodeEditor':
       dependencies.push('motion', 'shiki', 'next-themes');
       break;
+    case 'DropdownMenu':
+      dependencies.push('motion', '@radix-ui/react-dropdown-menu', 'lucide-react');
+      break;
+    case 'HoverCard':
+      dependencies.push('motion', '@radix-ui/react-hover-card');
+      break;
+    case 'Dialog':
+      dependencies.push('motion', '@radix-ui/react-dialog', 'lucide-react');
+      break;
+    case 'Collapsible':
+      dependencies.push('motion', '@radix-ui/react-collapsible');
+      break;
+    case 'Checkbox':
+      dependencies.push('motion', '@radix-ui/react-checkbox');
+      break;
+    case 'Accordion':
+      dependencies.push('motion', '@radix-ui/react-accordion', 'lucide-react');
+      break;
     case 'Tooltip':
       dependencies.push('motion');
       break;

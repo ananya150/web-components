@@ -11,7 +11,7 @@ import {
   TooltipTrigger,
   type TooltipProps,
   type TooltipContentProps,
-} from '@/components/ui/tooltip/tooltip';
+} from '@/components/ui/common/tooltip';
 
 type AvatarProps = TooltipProps & {
   children: React.ReactNode;

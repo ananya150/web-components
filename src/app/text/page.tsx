@@ -10,7 +10,7 @@ import { SlidingNumber } from "@/components/ui/text/sliding-number";
 import { SplittingText } from "@/components/ui/text/splitting";
 import { TypingText } from "@/components/ui/text/typing";
 import { WritingText } from "@/components/ui/text/writing";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/buttons/button";
 import { ChevronLeft, ChevronRight, RefreshCw } from "lucide-react";
 
 const navigationItems = [

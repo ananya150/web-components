@@ -4,7 +4,7 @@
     "category": "buttons",
     "description": "A versatile button component with multiple variants and sizes.",
     "cli": "npx @notacoder15/ak-ui-cli add button",
-    "import": "@/components/ui/button",
+    "import": "@/components/ui/buttons/button",
     "export": "Button",
     "props": {
       "variant": { "type": "enum", "values": ["default", "destructive", "outline", "secondary", "ghost", "link"], "default": "default" },
@@ -395,11 +395,121 @@
     "version": "1.0.0"
   },
   {
+    "name": "DropdownMenu",
+    "category": "common",
+    "description": "A menu component with animated highlights and comprehensive item types including checkboxes, radio groups, and submenus.",
+    "cli": "npx @notacoder15/ak-ui-cli add dropdown-menu",
+    "import": "@/components/ui/common/dropdown-menu",
+    "export": "DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuCheckboxItem, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuShortcut, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuGroup, DropdownMenuPortal",
+    "dependencies": ["@/components/ui/effects/motion-highlight"],
+    "props": {
+      "transition": { "type": "object", "default": "{ type: 'spring', stiffness: 350, damping: 35 }" },
+      "animateOnHover": { "type": "boolean", "default": true },
+      "align": { "type": "enum", "values": ["start", "center", "end"], "default": "center" },
+      "side": { "type": "enum", "values": ["top", "bottom", "left", "right"], "default": "bottom" },
+      "sideOffset": { "type": "number", "default": 4 },
+      "inset": { "type": "boolean", "default": false },
+      "variant": { "type": "enum", "values": ["default", "destructive"], "default": "default" }
+    },
+    "example": "<DropdownMenu><DropdownMenuTrigger asChild><Button>Open</Button></DropdownMenuTrigger><DropdownMenuContent><DropdownMenuItem>Profile</DropdownMenuItem></DropdownMenuContent></DropdownMenu>",
+    "version": "1.0.0"
+  },
+  {
+    "name": "HoverCard",
+    "category": "common",
+    "description": "A card that appears on hover with smooth animations and customizable content positioning.",
+    "cli": "npx @notacoder15/ak-ui-cli add hover-card",
+    "import": "@/components/ui/common/hover-card",
+    "export": "HoverCard, HoverCardTrigger, HoverCardContent",
+    "props": {
+      "transition": { "type": "object", "default": "{ type: 'spring', stiffness: 300, damping: 25 }" },
+      "align": { "type": "enum", "values": ["start", "center", "end"], "default": "center" },
+      "side": { "type": "enum", "values": ["top", "bottom", "left", "right"], "default": "bottom" },
+      "sideOffset": { "type": "number", "default": 4 },
+      "open": { "type": "boolean" },
+      "defaultOpen": { "type": "boolean" },
+      "onOpenChange": { "type": "function" }
+    },
+    "example": "<HoverCard><HoverCardTrigger asChild><Button variant=\"link\">@username</Button></HoverCardTrigger><HoverCardContent><p>User profile info</p></HoverCardContent></HoverCard>",
+    "version": "1.0.0"
+  },
+  {
+    "name": "Dialog",
+    "category": "common",
+    "description": "Modal dialog with 3D flip animations and customizable entry directions.",
+    "cli": "npx @notacoder15/ak-ui-cli add dialog",
+    "import": "@/components/ui/common/dialog",
+    "export": "Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogClose, DialogPortal, DialogOverlay",
+    "props": {
+      "from": { "type": "enum", "values": ["top", "bottom", "left", "right"], "default": "top" },
+      "transition": { "type": "object", "default": "{ type: 'spring', stiffness: 150, damping: 25 }" },
+      "open": { "type": "boolean" },
+      "defaultOpen": { "type": "boolean" },
+      "onOpenChange": { "type": "function" }
+    },
+    "example": "<Dialog><DialogTrigger asChild><Button>Open Dialog</Button></DialogTrigger><DialogContent><DialogHeader><DialogTitle>Title</DialogTitle></DialogHeader></DialogContent></Dialog>",
+    "version": "1.0.0"
+  },
+  {
+    "name": "Collapsible",
+    "category": "common",
+    "description": "Expandable content area with smooth height animations and spring transitions.",
+    "cli": "npx @notacoder15/ak-ui-cli add collapsible",
+    "import": "@/components/ui/common/collapsible",
+    "export": "Collapsible, CollapsibleTrigger, CollapsibleContent",
+    "props": {
+      "transition": { "type": "object", "default": "{ type: 'spring', stiffness: 150, damping: 22 }" },
+      "open": { "type": "boolean" },
+      "defaultOpen": { "type": "boolean" },
+      "onOpenChange": { "type": "function" }
+    },
+    "example": "<Collapsible><CollapsibleTrigger asChild><Button>Toggle</Button></CollapsibleTrigger><CollapsibleContent><p>Hidden content</p></CollapsibleContent></Collapsible>",
+    "version": "1.0.0"
+  },
+  {
+    "name": "Checkbox",
+    "category": "common",
+    "description": "Animated checkbox with smooth check mark drawing and hover effects.",
+    "cli": "npx @notacoder15/ak-ui-cli add checkbox",
+    "import": "@/components/ui/common/checkbox",
+    "export": "Checkbox",
+    "props": {
+      "checked": { "type": "boolean" },
+      "defaultChecked": { "type": "boolean" },
+      "onCheckedChange": { "type": "function" },
+      "disabled": { "type": "boolean", "default": false },
+      "required": { "type": "boolean", "default": false },
+      "name": { "type": "string" },
+      "value": { "type": "string" }
+    },
+    "example": "<Checkbox checked={true} onCheckedChange={(checked) => console.log(checked)} />",
+    "version": "1.0.0"
+  },
+  {
+    "name": "Accordion",
+    "category": "common",
+    "description": "Collapsible content sections with smooth animations and rotating chevron indicators.",
+    "cli": "npx @notacoder15/ak-ui-cli add accordion",
+    "import": "@/components/ui/common/accordion",
+    "export": "Accordion, AccordionItem, AccordionTrigger, AccordionContent",
+    "props": {
+      "type": { "type": "enum", "values": ["single", "multiple"], "default": "single" },
+      "collapsible": { "type": "boolean", "default": false },
+      "transition": { "type": "object", "default": "{ type: 'spring', stiffness: 150, damping: 22 }" },
+      "chevron": { "type": "boolean", "default": true },
+      "value": { "type": "string | string[]" },
+      "defaultValue": { "type": "string | string[]" },
+      "onValueChange": { "type": "function" }
+    },
+    "example": "<Accordion type=\"single\" collapsible><AccordionItem value=\"item-1\"><AccordionTrigger>Question?</AccordionTrigger><AccordionContent>Answer content</AccordionContent></AccordionItem></Accordion>",
+    "version": "1.0.0"
+  },
+  {
     "name": "Tooltip",
-    "category": "custom",
+    "category": "common",
     "description": "A flexible tooltip system with animations, positioning, and global state management.",
     "cli": "npx @notacoder15/ak-ui-cli add tooltip",
-    "import": "@/components/ui/tooltip/tooltip",
+    "import": "@/components/ui/common/tooltip",
     "export": "TooltipProvider, Tooltip, TooltipContent, TooltipTrigger",
     "props": {
       "side": { "type": "enum", "values": ["top", "bottom", "left", "right"], "default": "top" },

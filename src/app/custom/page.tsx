@@ -5,7 +5,7 @@ import { AvatarGroup, AvatarGroupTooltip } from "@/components/ui/custom/avatar-g
 import { CodeEditor } from "@/components/ui/custom/code-editor";
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/buttons/button";
 
 // Sample avatar data for demonstrations
 const sampleUsers = [
