@@ -1,103 +1,146 @@
-import Image from "next/image";
+'use client';
+
+import { Button } from "@/components/ui/button";
+import { CopyButton } from "@/components/ui/buttons/copy";
+import { FlipButton } from "@/components/ui/buttons/flip";
+import { GitHubStarsButton } from "@/components/ui/buttons/github-stars";
+import { IconButton } from "@/components/ui/buttons/icon";
+import { 
+  InputButton, 
+  InputButtonProvider, 
+  InputButtonAction, 
+  InputButtonSubmit, 
+  InputButtonInput 
+} from "@/components/ui/buttons/input";
+import { LiquidButton } from "@/components/ui/buttons/liquid";
+import { RippleButton } from "@/components/ui/buttons/ripple";
+import { Heart, Star, Search, Plus, Download, Settings } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="min-h-screen bg-background p-8">
+      <div className="max-w-6xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold text-foreground mb-4">Button Showcase</h1>
+          <p className="text-muted-foreground text-lg">
+            A collection of interactive button components with modern animations and effects.
+          </p>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+
+        {/* Button Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          
+          {/* Basic Button */}
+          <div className="bg-card border rounded-lg p-6 flex flex-col items-center space-y-4">
+            <h3 className="text-lg font-semibold">Basic Button</h3>
+            <div className="flex flex-wrap gap-3 justify-center">
+              <Button>Default</Button>
+              <Button variant="outline">Outline</Button>
+              <Button variant="secondary">Secondary</Button>
+              <Button variant="ghost">Ghost</Button>
+            </div>
+          </div>
+
+          {/* Copy Button */}
+          <div className="bg-card border rounded-lg p-6 flex flex-col items-center space-y-4">
+            <h3 className="text-lg font-semibold">Copy Button</h3>
+            <div className="flex flex-wrap gap-3 justify-center">
+              <CopyButton content="Hello World!" size="default" />
+              <CopyButton content="Copy me!" variant="outline" />
+              <CopyButton content="Another copy" variant="secondary" />
+            </div>
+          </div>
+
+          {/* Flip Button */}
+          <div className="bg-card border rounded-lg p-6 flex flex-col items-center space-y-4">
+            <h3 className="text-lg font-semibold">Flip Button</h3>
+            <div className="flex flex-wrap gap-3 justify-center">
+              <FlipButton frontText="Hover Me" backText="Flipped!" />
+              <FlipButton frontText="Click" backText="Action" from="left" />
+              <FlipButton frontText="Top" backText="Bottom" from="top" />
+            </div>
+          </div>
+
+          {/* GitHub Stars Button */}
+          <div className="bg-card border rounded-lg p-6 flex flex-col items-center space-y-4">
+            <h3 className="text-lg font-semibold">GitHub Stars</h3>
+            <div className="flex flex-wrap gap-3 justify-center">
+              <GitHubStarsButton username="vercel" repo="next.js" formatted={true} />
+            </div>
+          </div>
+
+          {/* Icon Button */}
+          <div className="bg-card border rounded-lg p-6 flex flex-col items-center space-y-4">
+            <h3 className="text-lg font-semibold">Icon Button</h3>
+            <div className="flex flex-wrap gap-3 justify-center">
+              <IconButton icon={Heart} />
+              <IconButton icon={Star} active={true} color={[255, 215, 0]} />
+              <IconButton icon={Settings} size="lg" color={[34, 197, 94]} />
+            </div>
+          </div>
+
+          {/* Input Button */}
+          <div className="bg-card border rounded-lg p-6 flex flex-col items-center space-y-4">
+            <h3 className="text-lg font-semibold">Input Button</h3>
+            <div className="flex justify-center w-full">
+              <InputButtonProvider className="w-full max-w-sm">
+                <InputButton>
+                  <InputButtonAction>Search...</InputButtonAction>
+                  <InputButtonInput placeholder="Type something..." />
+                  <InputButtonSubmit icon={Search}>Search</InputButtonSubmit>
+                </InputButton>
+              </InputButtonProvider>
+            </div>
+          </div>
+
+          {/* Liquid Button */}
+          <div className="bg-card border rounded-lg p-6 flex flex-col items-center space-y-4">
+            <h3 className="text-lg font-semibold">Liquid Button</h3>
+            <div className="flex flex-wrap gap-3 justify-center">
+              <LiquidButton>
+                <Plus className="mr-2" />
+                Hover Effect
+              </LiquidButton>
+              <LiquidButton variant="outline">
+                <Download className="mr-2" />
+                Download
+              </LiquidButton>
+            </div>
+          </div>
+
+          {/* Ripple Button */}
+          <div className="bg-card border rounded-lg p-6 flex flex-col items-center space-y-4">
+            <h3 className="text-lg font-semibold">Ripple Button</h3>
+            <div className="flex flex-wrap gap-3 justify-center">
+              <RippleButton>Click for Ripple</RippleButton>
+              <RippleButton variant="outline">Outline Ripple</RippleButton>
+              <RippleButton variant="secondary">Secondary</RippleButton>
+            </div>
+          </div>
+
+          {/* Button Sizes */}
+          <div className="bg-card border rounded-lg p-6 flex flex-col items-center space-y-4">
+            <h3 className="text-lg font-semibold">Button Sizes</h3>
+            <div className="flex flex-wrap gap-3 justify-center items-center">
+              <Button size="sm">Small</Button>
+              <Button size="default">Default</Button>
+              <Button size="lg">Large</Button>
+              <Button size="icon">
+                <Star />
+              </Button>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Footer */}
+        <div className="text-center mt-12 pt-8 border-t">
+          <p className="text-muted-foreground">
+            Built with Next.js, Tailwind CSS, and Framer Motion
+          </p>
+        </div>
+      </div>
     </div>
   );
 }
