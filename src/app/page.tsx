@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { CopyButton } from "@/components/ui/buttons/copy";
 import { FlipButton } from "@/components/ui/buttons/flip";
@@ -14,131 +15,325 @@ import {
 } from "@/components/ui/buttons/input";
 import { LiquidButton } from "@/components/ui/buttons/liquid";
 import { RippleButton } from "@/components/ui/buttons/ripple";
-import { Heart, Star, Search, Plus, Download, Settings } from "lucide-react";
+import { LiquidGlassButtonDemo } from "@/components/ui/buttons/liquid-glass";
+import { Heart, Star, Search, Plus, Download, Settings, ChevronLeft, ChevronRight } from "lucide-react";
+
+const navigationItems = [
+  { id: 'get-started', label: 'Get Started', section: 'overview' },
+  { id: 'introduction', label: 'Introduction', section: 'overview' },
+  { id: 'installation', label: 'Installation', section: 'overview' },
+  { id: 'components', label: 'Components', section: 'components', isHeader: true },
+  { id: 'basic-button', label: 'Button', section: 'components' },
+  { id: 'copy-button', label: 'Copy Button', section: 'components' },
+  { id: 'flip-button', label: 'Flip Button', section: 'components' },
+  { id: 'github-stars', label: 'GitHub Stars', section: 'components' },
+  { id: 'icon-button', label: 'Icon Button', section: 'components' },
+  { id: 'input-button', label: 'Input Button', section: 'components' },
+  { id: 'liquid-button', label: 'Liquid Button', section: 'components' },
+  { id: 'ripple-button', label: 'Ripple Button', section: 'components' },
+  { id: 'liquid-glass', label: 'Liquid Glass', section: 'components' },
+];
 
 export default function Home() {
+  const [activeSection, setActiveSection] = useState('basic-button');
+  const [activeTab, setActiveTab] = useState<'preview' | 'code'>('preview');
+
+  const scrollToSection = (sectionId: string) => {
+    setActiveSection(sectionId);
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-background p-8">
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-foreground mb-4">Button Showcase</h1>
-          <p className="text-muted-foreground text-lg">
-            A collection of interactive button components with modern animations and effects.
-          </p>
+    <div className="min-h-screen bg-background flex">
+      {/* Sidebar */}
+      <div className="w-64 border-r bg-card/50 sticky top-0 h-screen overflow-y-auto">
+        <div className="p-6">
+          <h2 className="text-lg font-semibold mb-6">Button Components</h2>
+          <nav className="space-y-1">
+            {navigationItems.map((item) => (
+              <div key={item.id}>
+                {item.isHeader ? (
+                  <div className="text-sm font-medium text-muted-foreground mt-6 mb-2 px-3">
+                    {item.label}
+                  </div>
+                ) : (
+                  <button
+                    onClick={() => scrollToSection(item.id)}
+                    className={`w-full text-left px-3 py-2 text-sm rounded-md transition-colors hover:bg-accent hover:text-accent-foreground ${
+                      activeSection === item.id 
+                        ? 'bg-accent text-accent-foreground font-medium' 
+                        : 'text-muted-foreground'
+                    }`}
+                  >
+                    {item.label}
+                  </button>
+                )}
+              </div>
+            ))}
+          </nav>
         </div>
+      </div>
 
-        {/* Button Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          
-          {/* Basic Button */}
-          <div className="bg-card border rounded-lg p-6 flex flex-col items-center space-y-4">
-            <h3 className="text-lg font-semibold">Basic Button</h3>
-            <div className="flex flex-wrap gap-3 justify-center">
-              <Button>Default</Button>
-              <Button variant="outline">Outline</Button>
-              <Button variant="secondary">Secondary</Button>
-              <Button variant="ghost">Ghost</Button>
+      {/* Main Content */}
+      <div className="flex-1 max-w-none">
+        {/* Header */}
+        <div className="sticky top-0 z-10 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b">
+          <div className="flex items-center justify-between px-6 py-4">
+            <div>
+              <h1 className="text-2xl font-bold">Button</h1>
+              <p className="text-muted-foreground">Displays a button or a component that looks like a button.</p>
             </div>
-          </div>
-
-          {/* Copy Button */}
-          <div className="bg-card border rounded-lg p-6 flex flex-col items-center space-y-4">
-            <h3 className="text-lg font-semibold">Copy Button</h3>
-            <div className="flex flex-wrap gap-3 justify-center">
-              <CopyButton content="Hello World!" size="default" />
-              <CopyButton content="Copy me!" variant="outline" />
-              <CopyButton content="Another copy" variant="secondary" />
-            </div>
-          </div>
-
-          {/* Flip Button */}
-          <div className="bg-card border rounded-lg p-6 flex flex-col items-center space-y-4">
-            <h3 className="text-lg font-semibold">Flip Button</h3>
-            <div className="flex flex-wrap gap-3 justify-center">
-              <FlipButton frontText="Hover Me" backText="Flipped!" />
-              <FlipButton frontText="Click" backText="Action" from="left" />
-              <FlipButton frontText="Top" backText="Bottom" from="top" />
-            </div>
-          </div>
-
-          {/* GitHub Stars Button */}
-          <div className="bg-card border rounded-lg p-6 flex flex-col items-center space-y-4">
-            <h3 className="text-lg font-semibold">GitHub Stars</h3>
-            <div className="flex flex-wrap gap-3 justify-center">
-              <GitHubStarsButton username="vercel" repo="next.js" formatted={true} />
-            </div>
-          </div>
-
-          {/* Icon Button */}
-          <div className="bg-card border rounded-lg p-6 flex flex-col items-center space-y-4">
-            <h3 className="text-lg font-semibold">Icon Button</h3>
-            <div className="flex flex-wrap gap-3 justify-center">
-              <IconButton icon={Heart} />
-              <IconButton icon={Star} active={true} color={[255, 215, 0]} />
-              <IconButton icon={Settings} size="lg" color={[34, 197, 94]} />
-            </div>
-          </div>
-
-          {/* Input Button */}
-          <div className="bg-card border rounded-lg p-6 flex flex-col items-center space-y-4">
-            <h3 className="text-lg font-semibold">Input Button</h3>
-            <div className="flex justify-center w-full">
-              <InputButtonProvider className="w-full max-w-sm">
-                <InputButton>
-                  <InputButtonAction>Search...</InputButtonAction>
-                  <InputButtonInput placeholder="Type something..." />
-                  <InputButtonSubmit icon={Search}>Search</InputButtonSubmit>
-                </InputButton>
-              </InputButtonProvider>
-            </div>
-          </div>
-
-          {/* Liquid Button */}
-          <div className="bg-card border rounded-lg p-6 flex flex-col items-center space-y-4">
-            <h3 className="text-lg font-semibold">Liquid Button</h3>
-            <div className="flex flex-wrap gap-3 justify-center">
-              <LiquidButton>
-                <Plus className="mr-2" />
-                Hover Effect
-              </LiquidButton>
-              <LiquidButton variant="outline">
-                <Download className="mr-2" />
-                Download
-              </LiquidButton>
-            </div>
-          </div>
-
-          {/* Ripple Button */}
-          <div className="bg-card border rounded-lg p-6 flex flex-col items-center space-y-4">
-            <h3 className="text-lg font-semibold">Ripple Button</h3>
-            <div className="flex flex-wrap gap-3 justify-center">
-              <RippleButton>Click for Ripple</RippleButton>
-              <RippleButton variant="outline">Outline Ripple</RippleButton>
-              <RippleButton variant="secondary">Secondary</RippleButton>
-            </div>
-          </div>
-
-          {/* Button Sizes */}
-          <div className="bg-card border rounded-lg p-6 flex flex-col items-center space-y-4">
-            <h3 className="text-lg font-semibold">Button Sizes</h3>
-            <div className="flex flex-wrap gap-3 justify-center items-center">
-              <Button size="sm">Small</Button>
-              <Button size="default">Default</Button>
-              <Button size="lg">Large</Button>
-              <Button size="icon">
-                <Star />
+            <div className="flex items-center space-x-2">
+              <Button variant="ghost" size="icon">
+                <ChevronLeft className="h-4 w-4" />
+              </Button>
+              <Button variant="ghost" size="icon">
+                <ChevronRight className="h-4 w-4" />
               </Button>
             </div>
           </div>
-
         </div>
 
-        {/* Footer */}
-        <div className="text-center mt-12 pt-8 border-t">
-          <p className="text-muted-foreground">
-            Built with Next.js, Tailwind CSS, and Framer Motion
-          </p>
+        {/* Content */}
+        <div className="px-6 py-6 space-y-16">
+          
+          {/* Get Started Section */}
+          <section id="get-started" className="space-y-6">
+            <div>
+              <h2 className="text-xl font-semibold mb-4">Get Started</h2>
+              <p className="text-muted-foreground">
+                Welcome to the Button Components showcase. This collection includes various interactive button components with modern animations and effects.
+              </p>
+            </div>
+          </section>
+
+          {/* Introduction Section */}
+          <section id="introduction" className="space-y-6">
+            <div>
+              <h2 className="text-xl font-semibold mb-4">Introduction</h2>
+              <p className="text-muted-foreground">
+                These button components are built with React, TypeScript, and Framer Motion. Each component offers unique interactions and visual feedback to enhance user experience.
+              </p>
+            </div>
+          </section>
+
+          {/* Installation Section */}
+          <section id="installation" className="space-y-6">
+            <div>
+              <h2 className="text-xl font-semibold mb-4">Installation</h2>
+              <div className="bg-muted p-4 rounded-lg">
+                <code className="text-sm">npm install framer-motion lucide-react class-variance-authority</code>
+              </div>
+            </div>
+          </section>
+
+          {/* Basic Button */}
+          <section id="basic-button" className="space-y-6">
+            <div>
+              <h2 className="text-xl font-semibold mb-4">Button</h2>
+              <p className="text-muted-foreground mb-6">
+                The basic button component with multiple variants and sizes.
+              </p>
+              
+              <div className="space-y-4">
+                <div className="flex items-center space-x-4 border-b">
+                  <button
+                    onClick={() => setActiveTab('preview')}
+                    className={`pb-2 text-sm font-medium border-b-2 transition-colors ${
+                      activeTab === 'preview' 
+                        ? 'border-primary text-primary' 
+                        : 'border-transparent text-muted-foreground hover:text-foreground'
+                    }`}
+                  >
+                    Preview
+                  </button>
+                  <button
+                    onClick={() => setActiveTab('code')}
+                    className={`pb-2 text-sm font-medium border-b-2 transition-colors ${
+                      activeTab === 'code' 
+                        ? 'border-primary text-primary' 
+                        : 'border-transparent text-muted-foreground hover:text-foreground'
+                    }`}
+                  >
+                    Code
+                  </button>
+                </div>
+                
+                <div className="border rounded-lg p-8 bg-card">
+                  {activeTab === 'preview' ? (
+                    <div className="flex flex-wrap gap-4 items-center justify-center">
+                      <Button>Default</Button>
+                      <Button variant="outline">Outline</Button>
+                      <Button variant="secondary">Secondary</Button>
+                      <Button variant="ghost">Ghost</Button>
+                      <Button variant="destructive">Destructive</Button>
+                    </div>
+                  ) : (
+                    <div className="bg-muted p-4 rounded text-sm">
+                      <pre>{`<Button>Default</Button>
+<Button variant="outline">Outline</Button>
+<Button variant="secondary">Secondary</Button>
+<Button variant="ghost">Ghost</Button>
+<Button variant="destructive">Destructive</Button>`}</pre>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Copy Button */}
+          <section id="copy-button" className="space-y-6">
+            <div>
+              <h2 className="text-xl font-semibold mb-4">Copy Button</h2>
+              <p className="text-muted-foreground mb-6">
+                Button with copy functionality and visual feedback animation.
+              </p>
+              
+              <div className="border rounded-lg p-8 bg-card">
+                <div className="flex flex-wrap gap-4 items-center justify-center">
+                  <CopyButton content="Hello World!" />
+                  <CopyButton content="Copy me!" variant="outline" />
+                  <CopyButton content="Another copy" variant="secondary" />
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Flip Button */}
+          <section id="flip-button" className="space-y-6">
+            <div>
+              <h2 className="text-xl font-semibold mb-4">Flip Button</h2>
+              <p className="text-muted-foreground mb-6">
+                3D flip animation effect with customizable flip directions.
+              </p>
+              
+              <div className="border rounded-lg p-8 bg-card">
+                <div className="flex flex-wrap gap-4 items-center justify-center">
+                  <FlipButton frontText="Hover Me" backText="Flipped!" />
+                  <FlipButton frontText="Left Flip" backText="Action" from="left" />
+                  <FlipButton frontText="Top Flip" backText="Bottom" from="top" />
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* GitHub Stars Button */}
+          <section id="github-stars" className="space-y-6">
+            <div>
+              <h2 className="text-xl font-semibold mb-4">GitHub Stars Button</h2>
+              <p className="text-muted-foreground mb-6">
+                Displays real GitHub repository star count with animated counter.
+              </p>
+              
+              <div className="border rounded-lg p-8 bg-card">
+                <div className="flex justify-center">
+                  <GitHubStarsButton username="vercel" repo="next.js" formatted={true} />
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Icon Button */}
+          <section id="icon-button" className="space-y-6">
+            <div>
+              <h2 className="text-xl font-semibold mb-4">Icon Button</h2>
+              <p className="text-muted-foreground mb-6">
+                Buttons with icons featuring interactive effects and customizable colors.
+              </p>
+              
+              <div className="border rounded-lg p-8 bg-card">
+                <div className="flex flex-wrap gap-4 items-center justify-center">
+                  <IconButton icon={Heart} />
+                  <IconButton icon={Star} active={true} color={[255, 215, 0]} />
+                  <IconButton icon={Settings} size="lg" color={[34, 197, 94]} />
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Input Button */}
+          <section id="input-button" className="space-y-6">
+            <div>
+              <h2 className="text-xl font-semibold mb-4">Input Button</h2>
+              <p className="text-muted-foreground mb-6">
+                Compound component that transforms between button and input field.
+              </p>
+              
+              <div className="border rounded-lg p-8 bg-card">
+                <div className="flex justify-center">
+                  <InputButtonProvider className="w-full max-w-sm">
+                    <InputButton>
+                      <InputButtonAction>Search...</InputButtonAction>
+                      <InputButtonInput placeholder="Type something..." />
+                      <InputButtonSubmit icon={Search}>Search</InputButtonSubmit>
+                    </InputButton>
+                  </InputButtonProvider>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Liquid Button */}
+          <section id="liquid-button" className="space-y-6">
+            <div>
+              <h2 className="text-xl font-semibold mb-4">Liquid Button</h2>
+              <p className="text-muted-foreground mb-6">
+                Hover effect with liquid-like fill animation.
+              </p>
+              
+              <div className="border rounded-lg p-8 bg-card">
+                <div className="flex flex-wrap gap-4 items-center justify-center">
+                  <LiquidButton>
+                    <Plus className="mr-2" />
+                    Hover Effect
+                  </LiquidButton>
+                  <LiquidButton variant="outline">
+                    <Download className="mr-2" />
+                    Download
+                  </LiquidButton>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Ripple Button */}
+          <section id="ripple-button" className="space-y-6">
+            <div>
+              <h2 className="text-xl font-semibold mb-4">Ripple Button</h2>
+              <p className="text-muted-foreground mb-6">
+                Click effect with ripple animation emanating from the click point.
+              </p>
+              
+              <div className="border rounded-lg p-8 bg-card">
+                <div className="flex flex-wrap gap-4 items-center justify-center">
+                  <RippleButton>Click for Ripple</RippleButton>
+                  <RippleButton variant="outline">Outline Ripple</RippleButton>
+                  <RippleButton variant="secondary">Secondary</RippleButton>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Liquid Glass Button */}
+          <section id="liquid-glass" className="space-y-6">
+            <div>
+              <h2 className="text-xl font-semibold mb-4">Liquid Glass Button</h2>
+              <p className="text-muted-foreground mb-6">
+                Interactive glass morphism effect with backdrop blur and realistic lighting.
+              </p>
+              
+              <div className="border rounded-lg overflow-hidden">
+                <div className="h-96">
+                  <LiquidGlassButtonDemo />
+                </div>
+              </div>
+            </div>
+          </section>
+
         </div>
       </div>
     </div>
