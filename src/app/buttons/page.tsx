@@ -16,7 +16,8 @@ import {
 import { LiquidButton } from "@/components/ui/buttons/liquid";
 import { RippleButton } from "@/components/ui/buttons/ripple";
 import { LiquidGlassButtonDemo } from "@/components/ui/buttons/liquid-glass";
-import { Heart, Star, Search, Plus, Download, Settings, ChevronLeft, ChevronRight } from "lucide-react";
+import { MagneticButton } from "@/components/ui/buttons/magnetic-button";
+import { Heart, Star, Search, Plus, Download, Settings, ChevronLeft, ChevronRight, Magnet } from "lucide-react";
 
 const navigationItems = [
   { id: 'components', label: 'Components', section: 'components', isHeader: true },
@@ -28,6 +29,7 @@ const navigationItems = [
   { id: 'input-button', label: 'Input Button', section: 'components' },
   { id: 'liquid-button', label: 'Liquid Button', section: 'components' },
   { id: 'ripple-button', label: 'Ripple Button', section: 'components' },
+  { id: 'magnetic-button', label: 'Magnetic Button', section: 'components' },
   { id: 'liquid-glass', label: 'Liquid Glass', section: 'components' },
 ];
 
@@ -290,25 +292,50 @@ export default function Home() {
             </div>
           </section>
 
-          {/* Ripple Button */}
-          <section id="ripple-button" className="space-y-6">
-            <div>
-              <h2 className="text-xl font-semibold mb-4">Ripple Button</h2>
-              <p className="text-muted-foreground mb-6">
-                Click effect with ripple animation emanating from the click point.
-              </p>
-              
-                             <div className="border rounded-lg bg-card">
+                     {/* Ripple Button */}
+           <section id="ripple-button" className="space-y-6">
+             <div>
+               <h2 className="text-xl font-semibold mb-4">Ripple Button</h2>
+               <p className="text-muted-foreground mb-6">
+                 Click effect with ripple animation emanating from the click point.
+               </p>
+               
+               <div className="border rounded-lg bg-card">
                  <div className="h-80 md:h-96 flex flex-wrap gap-4 items-center justify-center p-8">
                    <RippleButton>Click for Ripple</RippleButton>
                    <RippleButton variant="outline">Outline Ripple</RippleButton>
                    <RippleButton variant="secondary">Secondary</RippleButton>
                  </div>
                </div>
-            </div>
-          </section>
+             </div>
+           </section>
 
-          {/* Liquid Glass Button */}
+           {/* Magnetic Button */}
+           <section id="magnetic-button" className="space-y-6">
+             <div>
+               <h2 className="text-xl font-semibold mb-4">Magnetic Button</h2>
+               <p className="text-muted-foreground mb-6">
+                 Button with magnetic attraction effect that follows mouse movement within range.
+               </p>
+               
+               <div className="border rounded-lg bg-card">
+                 <div className="h-80 md:h-96 flex flex-wrap gap-4 items-center justify-center p-8">
+                   <MagneticButton>
+                     <Magnet className="mr-2" />
+                     Magnetic Effect
+                   </MagneticButton>
+                   <MagneticButton variant="outline" strength={0.5} range={150}>
+                     Strong Magnet
+                   </MagneticButton>
+                   <MagneticButton variant="secondary" strength={0.2} range={80}>
+                     Subtle Pull
+                   </MagneticButton>
+                 </div>
+               </div>
+             </div>
+           </section>
+
+           {/* Liquid Glass Button */}
           <section id="liquid-glass" className="space-y-6">
             <div>
               <h2 className="text-xl font-semibold mb-4">Liquid Glass Button</h2>
