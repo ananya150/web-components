@@ -50,7 +50,20 @@ export default function Home() {
     const handleScroll = () => {
       const sections = navigationItems.filter(item => !item.isHeader);
       const scrollPosition = window.scrollY + 200; // Offset for better UX
+      
+      // Check if we're at the bottom of the page
+      const isAtBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 10;
+      
+      if (isAtBottom) {
+        // If at bottom, activate the last section
+        const lastSection = sections[sections.length - 1];
+        if (lastSection) {
+          setActiveSection(lastSection.id);
+          return;
+        }
+      }
 
+      // Normal scroll detection logic
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = document.getElementById(sections[i].id);
         if (section && section.offsetTop <= scrollPosition) {
