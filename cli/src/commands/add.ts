@@ -49,7 +49,7 @@ export const addCommand = new Command('add')
         spinner.start(`Installing internal dependency: ${depName}...`);
         const depComponent = await getComponent(depName);
         if (depComponent) {
-          await installComponentFiles(depComponent, config);
+          await installComponentFiles(depComponent);
           const depNpmDeps = getNpmDependencies(depComponent);
           if (depNpmDeps.length > 0) {
             await installDependencies(depNpmDeps);
@@ -60,7 +60,7 @@ export const addCommand = new Command('add')
       
       // Install the main component
       spinner.start('Installing component files...');
-      await installComponentFiles(component, config);
+      await installComponentFiles(component);
       spinner.succeed('Component files installed');
       
       // Install npm dependencies
@@ -116,21 +116,13 @@ export const addCommand = new Command('add')
     }
   });
 
-async function installComponentFiles(component: { name: string; category: string; import: string }, config: { componentsDir: string }): Promise<void> {
-  // Determine target directory based on category
-  let targetDir: string;
-  if (component.category === 'buttons') {
-    targetDir = path.join(config.componentsDir, 'buttons');
-  } else if (component.category === 'text') {
-    targetDir = path.join(config.componentsDir, 'text');
-  } else {
-    targetDir = config.componentsDir;
-  }
-  
-  // Extract filename from import path
+async function installComponentFiles(component: { name: string; category: string; import: string }): Promise<void> {
+  // Extract the full import path structure
   const importPath = component.import.replace('@/', '');
-  const fileName = `${path.basename(importPath)}.tsx`;
-  const targetPath = path.join(targetDir, fileName);
+  
+  // Use the full import path to determine the target directory structure
+  // e.g., "@/components/ui/custom/avatar-group" -> "components/ui/custom/avatar-group.tsx"
+  const targetPath = path.join(process.cwd(), importPath + '.tsx');
   
   // Download and save the component file
   await downloadComponentFile(importPath, targetPath);

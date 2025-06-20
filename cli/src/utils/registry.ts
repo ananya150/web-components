@@ -47,8 +47,9 @@ export async function loadRegistry(): Promise<ComponentRegistry> {
       return data;
     }
     
-    // Fallback to remote registry
-    const response = await fetch(REGISTRY_URL);
+    // Fallback to remote registry with cache busting
+    const cacheBuster = Date.now();
+    const response = await fetch(`${REGISTRY_URL}?v=${cacheBuster}`);
     if (!response.ok) {
       throw new Error(`Failed to fetch registry: ${response.statusText}`);
     }
