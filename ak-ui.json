@@ -3,7 +3,7 @@
     "name": "Button",
     "category": "buttons",
     "description": "A versatile button component with multiple variants and sizes.",
-    "cli": "npx ak-ui add button",
+    "cli": "npx @notacoder15/ak-ui-cli add button",
     "import": "@/components/ui/button",
     "export": "Button",
     "props": {
@@ -18,7 +18,7 @@
     "name": "CopyButton",
     "category": "buttons",
     "description": "A button with copy-to-clipboard functionality and visual feedback animation.",
-    "cli": "npx ak-ui add copy-button",
+    "cli": "npx @notacoder15/ak-ui-cli add copy-button",
     "import": "@/components/ui/buttons/copy",
     "export": "CopyButton",
     "props": {
@@ -37,7 +37,7 @@
     "name": "FlipButton",
     "category": "buttons",
     "description": "A button with 3D flip animation effect on hover with customizable directions.",
-    "cli": "npx ak-ui add flip-button",
+    "cli": "npx @notacoder15/ak-ui-cli add flip-button",
     "import": "@/components/ui/buttons/flip",
     "export": "FlipButton",
     "props": {
@@ -54,7 +54,7 @@
     "name": "GitHubStarsButton",
     "category": "buttons",
     "description": "A button that displays real GitHub repository star count with animated counter. Fetches data from GitHub API.",
-    "cli": "npx ak-ui add github-stars-button",
+    "cli": "npx @notacoder15/ak-ui-cli add github-stars-button",
     "import": "@/components/ui/buttons/github-stars",
     "export": "GitHubStarsButton",
     "dependencies": ["@/components/ui/text/sliding-number"],
@@ -74,7 +74,7 @@
     "name": "IconButton",
     "category": "buttons",
     "description": "A circular button with icons featuring interactive effects and customizable colors.",
-    "cli": "npx ak-ui add icon-button",
+    "cli": "npx @notacoder15/ak-ui-cli add icon-button",
     "import": "@/components/ui/buttons/icon",
     "export": "IconButton",
     "props": {
@@ -91,7 +91,7 @@
     "name": "InputButton",
     "category": "buttons",
     "description": "A compound component that transforms between button and input field with smooth animations.",
-    "cli": "npx ak-ui add input-button",
+    "cli": "npx @notacoder15/ak-ui-cli add input-button",
     "import": "@/components/ui/buttons/input",
     "export": "InputButton, InputButtonProvider, InputButtonAction, InputButtonSubmit, InputButtonInput",
     "props": {
@@ -106,7 +106,7 @@
     "name": "LiquidButton",
     "category": "buttons",
     "description": "A button with liquid-like fill animation effect on hover.",
-    "cli": "npx ak-ui add liquid-button",
+    "cli": "npx @notacoder15/ak-ui-cli add liquid-button",
     "import": "@/components/ui/buttons/liquid",
     "export": "LiquidButton",
     "props": {
@@ -120,7 +120,7 @@
     "name": "RippleButton",
     "category": "buttons",
     "description": "A button with ripple click effect that emanates from the click point.",
-    "cli": "npx ak-ui add ripple-button",
+    "cli": "npx @notacoder15/ak-ui-cli add ripple-button",
     "import": "@/components/ui/buttons/ripple",
     "export": "RippleButton",
     "props": {
@@ -136,7 +136,7 @@
     "name": "MagneticButton",
     "category": "buttons",
     "description": "A button with magnetic attraction effect that follows mouse movement within range.",
-    "cli": "npx ak-ui add magnetic-button",
+    "cli": "npx @notacoder15/ak-ui-cli add magnetic-button",
     "import": "@/components/ui/buttons/magnetic",
     "export": "MagneticButton",
     "props": {
@@ -155,7 +155,7 @@
     "name": "LiquidGlassButton",
     "category": "buttons",
     "description": "Interactive glass morphism button with backdrop blur and realistic lighting effects.",
-    "cli": "npx ak-ui add liquid-glass-button",
+    "cli": "npx @notacoder15/ak-ui-cli add liquid-glass-button",
     "import": "@/components/ui/buttons/liquid-glass",
     "export": "LiquidGlassButton, LiquidGlassButtonDemo",
     "props": {
@@ -172,7 +172,7 @@
     "name": "SlidingNumber",
     "category": "text",
     "description": "An animated number component with smooth sliding transitions between values.",
-    "cli": "npx ak-ui add sliding-number",
+    "cli": "npx @notacoder15/ak-ui-cli add sliding-number",
     "import": "@/components/ui/text/sliding-number",
     "export": "SlidingNumber",
     "props": {

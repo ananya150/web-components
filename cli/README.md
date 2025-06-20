@@ -15,22 +15,22 @@ A command-line interface for installing beautiful, customizable React components
 
 ```bash
 # Install globally
-npm install -g @ak-ui/cli
+npm install -g @notacoder15/ak-ui-cli
 
 # Or use with npx (recommended)
-npx ak-ui --help
+npx @notacoder15/ak-ui-cli --help
 ```
 
 ## Quick Start
 
 1. **Initialize your project**
    ```bash
-   npx ak-ui init
+   npx @notacoder15/ak-ui-cli init
    ```
 
 2. **Install a component**
    ```bash
-   npx ak-ui add copy-button
+   npx @notacoder15/ak-ui-cli add copy-button
    ```
 
 3. **Use in your app**
@@ -67,9 +67,9 @@ npx ak-ui init
 Install a component with all its dependencies.
 
 ```bash
-npx ak-ui add button
-npx ak-ui add copy-button
-npx ak-ui add github-stars-button
+npx @notacoder15/ak-ui-cli add button
+npx @notacoder15/ak-ui-cli add copy-button
+npx @notacoder15/ak-ui-cli add github-stars-button
 ```
 
 **What it does:**
@@ -82,7 +82,7 @@ npx ak-ui add github-stars-button
 **Example:**
 ```bash
 # Install the GitHub Stars Button
-npx ak-ui add github-stars-button
+npx @notacoder15/ak-ui-cli add github-stars-button
 
 # This will install:
 # - GitHubStarsButton component
@@ -96,13 +96,13 @@ List all available components.
 
 ```bash
 # List all components
-npx ak-ui list
+npx @notacoder15/ak-ui-cli list
 
 # List only button components
-npx ak-ui list --category buttons
+npx @notacoder15/ak-ui-cli list --category buttons
 
 # List only text components
-npx ak-ui list --category text
+npx @notacoder15/ak-ui-cli list --category text
 ```
 
 ### `ak-ui remove <component> [--force]`
@@ -111,10 +111,10 @@ Remove a component from your project.
 
 ```bash
 # Remove with confirmation prompt
-npx ak-ui remove copy-button
+npx @notacoder15/ak-ui-cli remove copy-button
 
 # Remove without confirmation
-npx ak-ui remove copy-button --force
+npx @notacoder15/ak-ui-cli remove copy-button --force
 ```
 
 **What it does:**
@@ -129,22 +129,22 @@ npx ak-ui remove copy-button --force
 
 | Component | Description | CLI Command |
 |-----------|-------------|-------------|
-| **Button** | Base button with variants and sizes | `npx ak-ui add button` |
-| **CopyButton** | Copy-to-clipboard with feedback | `npx ak-ui add copy-button` |
-| **FlipButton** | 3D flip animation on hover | `npx ak-ui add flip-button` |
-| **GitHubStarsButton** | GitHub stars with animated counter | `npx ak-ui add github-stars-button` |
-| **IconButton** | Circular button with interactive effects | `npx ak-ui add icon-button` |
-| **InputButton** | Transform between button and input | `npx ak-ui add input-button` |
-| **LiquidButton** | Liquid fill animation on hover | `npx ak-ui add liquid-button` |
-| **LiquidGlassButton** | Glass morphism with backdrop blur | `npx ak-ui add liquid-glass-button` |
-| **MagneticButton** | Magnetic attraction to mouse | `npx ak-ui add magnetic-button` |
-| **RippleButton** | Ripple effect from click point | `npx ak-ui add ripple-button` |
+| **Button** | Base button with variants and sizes | `npx @notacoder15/ak-ui-cli add button` |
+| **CopyButton** | Copy-to-clipboard with feedback | `npx @notacoder15/ak-ui-cli add copy-button` |
+| **FlipButton** | 3D flip animation on hover | `npx @notacoder15/ak-ui-cli add flip-button` |
+| **GitHubStarsButton** | GitHub stars with animated counter | `npx @notacoder15/ak-ui-cli add github-stars-button` |
+| **IconButton** | Circular button with interactive effects | `npx @notacoder15/ak-ui-cli add icon-button` |
+| **InputButton** | Transform between button and input | `npx @notacoder15/ak-ui-cli add input-button` |
+| **LiquidButton** | Liquid fill animation on hover | `npx @notacoder15/ak-ui-cli add liquid-button` |
+| **LiquidGlassButton** | Glass morphism with backdrop blur | `npx @notacoder15/ak-ui-cli add liquid-glass-button` |
+| **MagneticButton** | Magnetic attraction to mouse | `npx @notacoder15/ak-ui-cli add magnetic-button` |
+| **RippleButton** | Ripple effect from click point | `npx @notacoder15/ak-ui-cli add ripple-button` |
 
 ### Text (1 component)
 
 | Component | Description | CLI Command |
 |-----------|-------------|-------------|
-| **SlidingNumber** | Animated number transitions | `npx ak-ui add sliding-number` |
+| **SlidingNumber** | Animated number transitions | `npx @notacoder15/ak-ui-cli add sliding-number` |
 
 ## Project Structure
 
@@ -317,13 +317,13 @@ export default function Example() {
 
 **TypeScript errors**
 - Make sure `@/` path aliases are configured in `tsconfig.json`
-- Run `npx ak-ui init` to set up proper configuration
+- Run `npx @notacoder15/ak-ui-cli init` to set up proper configuration
 
 ### Getting Help
 
 - Check the [GitHub repository](https://github.com/ananya150/web-components) for issues
 - Review component examples in the `/src/app/buttons` directory
-- Use `npx ak-ui --help` for command reference
+- Use `npx @notacoder15/ak-ui-cli --help` for command reference
 
 ## Contributing
 

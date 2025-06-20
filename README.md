@@ -8,12 +8,12 @@ Install components with a single command:
 
 ```bash
 # Initialize your project
-npx @ak-ui/cli init
+npx @notacoder15/ak-ui-cli init
 
 # Install any component
-npx @ak-ui/cli add copy-button
-npx @ak-ui/cli add github-stars-button
-npx @ak-ui/cli add magnetic-button
+npx @notacoder15/ak-ui-cli add copy-button
+npx @notacoder15/ak-ui-cli add github-stars-button
+npx @notacoder15/ak-ui-cli add magnetic-button
 ```
 
 ## ✨ Features
@@ -33,7 +33,7 @@ npx @ak-ui/cli add magnetic-button
 
 ```bash
 # Install the CLI
-npm install -g @ak-ui/cli
+npm install -g @notacoder15/ak-ui-cli
 
 # Initialize your project
 ak-ui init
@@ -258,7 +258,7 @@ MIT License - see [LICENSE](LICENSE) for details.
 ## 🔗 Links
 
 - **GitHub**: [https://github.com/ananya150/web-components](https://github.com/ananya150/web-components)
-- **NPM Package**: `@ak-ui/cli`
+- **NPM Package**: `@notacoder15/ak-ui-cli`
 - **Issues**: [GitHub Issues](https://github.com/ananya150/web-components/issues)
 
 ## 🙏 Acknowledgments
