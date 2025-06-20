@@ -139,6 +139,30 @@ export function getNpmDependencies(component: Component): string[] {
     case 'SlidingNumber':
       dependencies.push('motion', 'react-use-measure');
       break;
+    case 'CountingNumber':
+      dependencies.push('motion');
+      break;
+    case 'GradientText':
+      dependencies.push('motion');
+      break;
+    case 'HighlightText':
+      dependencies.push('motion');
+      break;
+    case 'RollingText':
+      dependencies.push('motion');
+      break;
+    case 'RotatingText':
+      dependencies.push('motion');
+      break;
+    case 'SplittingText':
+      dependencies.push('motion');
+      break;
+    case 'TypingText':
+      dependencies.push('motion');
+      break;
+    case 'WritingText':
+      dependencies.push('motion');
+      break;
     case 'AvatarGroup':
       dependencies.push('motion');
       break;

@@ -189,6 +189,162 @@
     "version": "1.0.0"
   },
   {
+    "name": "CountingNumber",
+    "category": "text",
+    "description": "Animated number counter with smooth spring transitions and customizable formatting.",
+    "cli": "npx @notacoder15/ak-ui-cli add counting-number",
+    "import": "@/components/ui/text/counting-number",
+    "export": "CountingNumber",
+    "props": {
+      "number": "number",
+      "fromNumber": { "type": "number", "default": 0 },
+      "padStart": { "type": "boolean", "default": false },
+      "inView": { "type": "boolean", "default": false },
+      "inViewMargin": { "type": "string", "default": "0px" },
+      "inViewOnce": { "type": "boolean", "default": true },
+      "decimalSeparator": { "type": "string", "default": "." },
+      "transition": { "type": "object", "default": "{ stiffness: 90, damping: 50 }" },
+      "decimalPlaces": { "type": "number", "default": 0 },
+      "className": "string"
+    },
+    "example": "<CountingNumber number={1234} fromNumber={0} />",
+    "version": "1.0.0"
+  },
+  {
+    "name": "GradientText",
+    "category": "text",
+    "description": "Animated gradient text with customizable colors and optional neon glow effect.",
+    "cli": "npx @notacoder15/ak-ui-cli add gradient-text",
+    "import": "@/components/ui/text/gradient",
+    "export": "GradientText",
+    "props": {
+      "text": "string",
+      "gradient": { "type": "string", "default": "linear-gradient(90deg, #3b82f6 0%, #a855f7 20%, #ec4899 50%, #a855f7 80%, #3b82f6 100%)" },
+      "neon": { "type": "boolean", "default": false },
+      "transition": { "type": "object", "default": "{ duration: 50, repeat: Infinity, ease: 'linear' }" },
+      "className": "string"
+    },
+    "example": "<GradientText text=\"Beautiful Gradient\" neon />",
+    "version": "1.0.0"
+  },
+  {
+    "name": "HighlightText",
+    "category": "text",
+    "description": "Text with animated highlight background that expands on view.",
+    "cli": "npx @notacoder15/ak-ui-cli add highlight-text",
+    "import": "@/components/ui/text/highlight",
+    "export": "HighlightText",
+    "props": {
+      "text": "string",
+      "inView": { "type": "boolean", "default": false },
+      "inViewMargin": { "type": "string", "default": "0px" },
+      "inViewOnce": { "type": "boolean", "default": true },
+      "transition": { "type": "object", "default": "{ duration: 2, ease: 'easeInOut' }" },
+      "className": "string"
+    },
+    "example": "<HighlightText text=\"Highlighted Text\" inView />",
+    "version": "1.0.0"
+  },
+  {
+    "name": "RollingText",
+    "category": "text",
+    "description": "3D rolling animation effect with perspective transforms.",
+    "cli": "npx @notacoder15/ak-ui-cli add rolling-text",
+    "import": "@/components/ui/text/rolling",
+    "export": "RollingText",
+    "props": {
+      "text": "string",
+      "transition": { "type": "object", "default": "{ duration: 0.5, delay: 0.1, ease: 'easeOut' }" },
+      "inView": { "type": "boolean", "default": false },
+      "inViewMargin": { "type": "string", "default": "0px" },
+      "inViewOnce": { "type": "boolean", "default": true },
+      "className": "string"
+    },
+    "example": "<RollingText text=\"Rolling Animation\" inView />",
+    "version": "1.0.0"
+  },
+  {
+    "name": "RotatingText",
+    "category": "text",
+    "description": "Cycles through multiple text options with smooth transitions.",
+    "cli": "npx @notacoder15/ak-ui-cli add rotating-text",
+    "import": "@/components/ui/text/rotating",
+    "export": "RotatingText",
+    "props": {
+      "text": "string | string[]",
+      "duration": { "type": "number", "default": 2000 },
+      "transition": { "type": "object", "default": "{ duration: 0.3, ease: 'easeOut' }" },
+      "y": { "type": "number", "default": -50 },
+      "containerClassName": "string",
+      "className": "string"
+    },
+    "example": "<RotatingText text={[\"Amazing\", \"Beautiful\", \"Incredible\"]} duration={2000} />",
+    "version": "1.0.0"
+  },
+  {
+    "name": "SplittingText",
+    "category": "text",
+    "description": "Text animation that splits by characters, words, or lines with staggered effects.",
+    "cli": "npx @notacoder15/ak-ui-cli add splitting-text",
+    "import": "@/components/ui/text/splitting",
+    "export": "SplittingText",
+    "props": {
+      "text": "string | string[]",
+      "type": { "type": "enum", "values": ["chars", "words", "lines"], "default": "chars" },
+      "motionVariants": { "type": "object", "default": "{}" },
+      "inView": { "type": "boolean", "default": false },
+      "inViewMargin": { "type": "string", "default": "0px" },
+      "inViewOnce": { "type": "boolean", "default": true },
+      "delay": { "type": "number", "default": 0 },
+      "className": "string"
+    },
+    "example": "<SplittingText text=\"Character Split\" type=\"chars\" inView />",
+    "version": "1.0.0"
+  },
+  {
+    "name": "TypingText",
+    "category": "text",
+    "description": "Typewriter effect with optional cursor and support for multiple text sequences.",
+    "cli": "npx @notacoder15/ak-ui-cli add typing-text",
+    "import": "@/components/ui/text/typing",
+    "export": "TypingText",
+    "props": {
+      "text": "string | string[]",
+      "duration": { "type": "number", "default": 100 },
+      "delay": { "type": "number", "default": 0 },
+      "inView": { "type": "boolean", "default": false },
+      "inViewMargin": { "type": "string", "default": "0px" },
+      "inViewOnce": { "type": "boolean", "default": true },
+      "cursor": { "type": "boolean", "default": false },
+      "loop": { "type": "boolean", "default": false },
+      "holdDelay": { "type": "number", "default": 1000 },
+      "cursorClassName": "string",
+      "animateOnChange": { "type": "boolean", "default": true },
+      "className": "string"
+    },
+    "example": "<TypingText text=\"Hello, World!\" cursor duration={100} />",
+    "version": "1.0.0"
+  },
+  {
+    "name": "WritingText",
+    "category": "text",
+    "description": "Word-by-word animation with spring transitions and customizable spacing.",
+    "cli": "npx @notacoder15/ak-ui-cli add writing-text",
+    "import": "@/components/ui/text/writing",
+    "export": "WritingText",
+    "props": {
+      "text": "string",
+      "transition": { "type": "object", "default": "{ type: 'spring', bounce: 0, duration: 2, delay: 0.5 }" },
+      "inView": { "type": "boolean", "default": false },
+      "inViewMargin": { "type": "string", "default": "0px" },
+      "inViewOnce": { "type": "boolean", "default": true },
+      "spacing": { "type": "number | string", "default": 5 },
+      "className": "string"
+    },
+    "example": "<WritingText text=\"Beautiful writing animation\" inView />",
+    "version": "1.0.0"
+  },
+  {
     "name": "AvatarGroup",
     "category": "custom",
     "description": "Display a collection of avatars in an overlapping group layout with hover animations and tooltips.",

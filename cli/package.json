@@ -1,6 +1,6 @@
 {
   "name": "@notacoder15/ak-ui-cli",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "CLI tool for installing beautiful, customizable React components. Similar to shadcn/ui but for AK UI components.",
   "type": "module",
   "main": "dist/index.js",
