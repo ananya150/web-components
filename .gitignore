@@ -39,3 +39,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# CLI build artifacts
+/cli/dist/
+/cli/node_modules/
+
+# Test projects (temporary)
+/test-project*/

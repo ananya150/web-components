@@ -16,7 +16,7 @@ import {
 import { LiquidButton } from "@/components/ui/buttons/liquid";
 import { RippleButton } from "@/components/ui/buttons/ripple";
 import { LiquidGlassButtonDemo } from "@/components/ui/buttons/liquid-glass";
-import { MagneticButton } from "@/components/ui/buttons/magnetic-button";
+import { MagneticButton } from "@/components/ui/buttons/magnetic";
 import { Heart, Star, Search, Plus, Download, Settings, ChevronLeft, ChevronRight, Magnet } from "lucide-react";
 
 const navigationItems = [

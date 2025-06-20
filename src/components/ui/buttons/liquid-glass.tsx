@@ -9,6 +9,7 @@ interface GlassEffectProps {
   style?: React.CSSProperties;
   href?: string;
   target?: string;
+  onClick?: () => void;
 }
 
 interface DockIcon {
@@ -24,6 +25,7 @@ const GlassEffect: React.FC<GlassEffectProps> = ({
   style = {},
   href,
   target = "_blank",
+  onClick,
 }) => {
   const glassStyle = {
     boxShadow: "0 6px 6px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.1)",
@@ -35,6 +37,7 @@ const GlassEffect: React.FC<GlassEffectProps> = ({
     <div
       className={`relative flex font-semibold overflow-hidden text-black cursor-pointer transition-all duration-700 ${className}`}
       style={glassStyle}
+      onClick={onClick}
     >
       {/* Glass Layers */}
       <div
@@ -171,6 +174,36 @@ const GlassFilter: React.FC = () => (
     </filter>
   </svg>
 );
+// Generalized Liquid Glass Button Component
+export const LiquidGlassButton: React.FC<{
+  children: React.ReactNode;
+  href?: string;
+  target?: string;
+  onClick?: () => void;
+  className?: string;
+}> = ({ children, href, target = "_blank", onClick, className = "" }) => {
+  return (
+    <>
+      <GlassFilter />
+      <GlassEffect
+        href={href}
+        target={target}
+        className={`rounded-3xl px-10 py-6 hover:px-11 hover:py-7 hover:rounded-4xl overflow-hidden ${className}`}
+        onClick={onClick}
+      >
+        <div
+          className="transition-all duration-700 hover:scale-95 text-white"
+          style={{
+            transitionTimingFunction: "cubic-bezier(0.175, 0.885, 0.32, 2.2)",
+          }}
+        >
+          {children}
+        </div>
+      </GlassEffect>
+    </>
+  );
+};
+
 // Main Component
 export const LiquidGlassButtonDemo = () => {
   const dockIcons: DockIcon[] = [

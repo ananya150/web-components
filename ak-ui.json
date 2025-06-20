@@ -1,0 +1,191 @@
+[
+  {
+    "name": "Button",
+    "category": "buttons",
+    "description": "A versatile button component with multiple variants and sizes.",
+    "cli": "npx ak-ui add button",
+    "import": "@/components/ui/button",
+    "export": "Button",
+    "props": {
+      "variant": { "type": "enum", "values": ["default", "destructive", "outline", "secondary", "ghost", "link"], "default": "default" },
+      "size": { "type": "enum", "values": ["default", "sm", "lg", "icon"], "default": "default" },
+      "asChild": { "type": "boolean", "default": false }
+    },
+    "example": "<Button variant=\"default\" size=\"default\">Click me</Button>",
+    "version": "1.0.0"
+  },
+  {
+    "name": "CopyButton",
+    "category": "buttons",
+    "description": "A button with copy-to-clipboard functionality and visual feedback animation.",
+    "cli": "npx ak-ui add copy-button",
+    "import": "@/components/ui/buttons/copy",
+    "export": "CopyButton",
+    "props": {
+      "content": "string",
+      "variant": { "type": "enum", "values": ["default", "destructive", "outline", "secondary", "ghost", "muted"], "default": "default" },
+      "size": { "type": "enum", "values": ["default", "sm", "md", "lg"], "default": "default" },
+      "delay": { "type": "number", "default": 3000 },
+      "isCopied": { "type": "boolean", "default": false },
+      "onCopy": "function",
+      "onCopyChange": "function"
+    },
+    "example": "<CopyButton content=\"Hello World!\" variant=\"default\" />",
+    "version": "1.0.0"
+  },
+  {
+    "name": "FlipButton",
+    "category": "buttons",
+    "description": "A button with 3D flip animation effect on hover with customizable directions.",
+    "cli": "npx ak-ui add flip-button",
+    "import": "@/components/ui/buttons/flip",
+    "export": "FlipButton",
+    "props": {
+      "frontText": "string",
+      "backText": "string",
+      "from": { "type": "enum", "values": ["top", "bottom", "left", "right"], "default": "top" },
+      "frontClassName": "string",
+      "backClassName": "string"
+    },
+    "example": "<FlipButton frontText=\"Hover Me\" backText=\"Flipped!\" from=\"top\" />",
+    "version": "1.0.0"
+  },
+  {
+    "name": "GitHubStarsButton",
+    "category": "buttons",
+    "description": "A button that displays real GitHub repository star count with animated counter. Fetches data from GitHub API.",
+    "cli": "npx ak-ui add github-stars-button",
+    "import": "@/components/ui/buttons/github-stars",
+    "export": "GitHubStarsButton",
+    "dependencies": ["@/components/ui/text/sliding-number"],
+    "props": {
+      "username": "string",
+      "repo": "string",
+      "formatted": { "type": "boolean", "default": false },
+      "inView": { "type": "boolean", "default": false },
+      "inViewOnce": { "type": "boolean", "default": true },
+      "inViewMargin": "string",
+      "transition": "object"
+    },
+    "example": "<GitHubStarsButton username=\"vercel\" repo=\"next.js\" formatted={true} />",
+    "version": "1.0.0"
+  },
+  {
+    "name": "IconButton",
+    "category": "buttons",
+    "description": "A circular button with icons featuring interactive effects and customizable colors.",
+    "cli": "npx ak-ui add icon-button",
+    "import": "@/components/ui/buttons/icon",
+    "export": "IconButton",
+    "props": {
+      "icon": "React.ElementType",
+      "active": { "type": "boolean", "default": false },
+      "animate": { "type": "boolean", "default": true },
+      "size": { "type": "enum", "values": ["default", "sm", "md", "lg"], "default": "default" },
+      "color": { "type": "array", "default": [59, 130, 246] }
+    },
+    "example": "<IconButton icon={Heart} active={true} size=\"default\" />",
+    "version": "1.0.0"
+  },
+  {
+    "name": "InputButton",
+    "category": "buttons",
+    "description": "A compound component that transforms between button and input field with smooth animations.",
+    "cli": "npx ak-ui add input-button",
+    "import": "@/components/ui/buttons/input",
+    "export": "InputButton, InputButtonProvider, InputButtonAction, InputButtonSubmit, InputButtonInput",
+    "props": {
+      "showInput": { "type": "boolean", "default": false },
+      "placeholder": "string",
+      "icon": "React.ElementType"
+    },
+    "example": "<InputButtonProvider><InputButton><InputButtonAction>Search...</InputButtonAction><InputButtonInput placeholder=\"Type...\" /><InputButtonSubmit>Go</InputButtonSubmit></InputButton></InputButtonProvider>",
+    "version": "1.0.0"
+  },
+  {
+    "name": "LiquidButton",
+    "category": "buttons",
+    "description": "A button with liquid-like fill animation effect on hover.",
+    "cli": "npx ak-ui add liquid-button",
+    "import": "@/components/ui/buttons/liquid",
+    "export": "LiquidButton",
+    "props": {
+      "variant": { "type": "enum", "values": ["default", "outline", "secondary"], "default": "default" },
+      "size": { "type": "enum", "values": ["default", "sm", "lg", "icon"], "default": "default" }
+    },
+    "example": "<LiquidButton variant=\"default\">Hover Effect</LiquidButton>",
+    "version": "1.0.0"
+  },
+  {
+    "name": "RippleButton",
+    "category": "buttons",
+    "description": "A button with ripple click effect that emanates from the click point.",
+    "cli": "npx ak-ui add ripple-button",
+    "import": "@/components/ui/buttons/ripple",
+    "export": "RippleButton",
+    "props": {
+      "variant": { "type": "enum", "values": ["default", "destructive", "outline", "secondary", "ghost"], "default": "default" },
+      "size": { "type": "enum", "values": ["default", "sm", "lg", "icon"], "default": "default" },
+      "scale": { "type": "number", "default": 10 },
+      "rippleClassName": "string"
+    },
+    "example": "<RippleButton variant=\"default\">Click for Ripple</RippleButton>",
+    "version": "1.0.0"
+  },
+  {
+    "name": "MagneticButton",
+    "category": "buttons",
+    "description": "A button with magnetic attraction effect that follows mouse movement within range.",
+    "cli": "npx ak-ui add magnetic-button",
+    "import": "@/components/ui/buttons/magnetic",
+    "export": "MagneticButton",
+    "props": {
+      "variant": { "type": "enum", "values": ["default", "destructive", "outline", "secondary", "ghost"], "default": "default" },
+      "size": { "type": "enum", "values": ["default", "sm", "lg", "icon"], "default": "default" },
+      "strength": { "type": "number", "default": 0.3 },
+      "range": { "type": "number", "default": 100 },
+      "onlyOnHover": { "type": "boolean", "default": true },
+      "disableOnTouch": { "type": "boolean", "default": true },
+      "springOptions": "object"
+    },
+    "example": "<MagneticButton strength={0.3} range={100}>Magnetic Effect</MagneticButton>",
+    "version": "1.0.0"
+  },
+  {
+    "name": "LiquidGlassButton",
+    "category": "buttons",
+    "description": "Interactive glass morphism button with backdrop blur and realistic lighting effects.",
+    "cli": "npx ak-ui add liquid-glass-button",
+    "import": "@/components/ui/buttons/liquid-glass",
+    "export": "LiquidGlassButton, LiquidGlassButtonDemo",
+    "props": {
+      "children": "React.ReactNode",
+      "href": "string",
+      "target": { "type": "string", "default": "_blank" },
+      "onClick": "() => void",
+      "className": "string"
+    },
+    "example": "<LiquidGlassButton href=\"https://example.com\">Glass Button</LiquidGlassButton>",
+    "version": "1.0.0"
+  },
+  {
+    "name": "SlidingNumber",
+    "category": "text",
+    "description": "An animated number component with smooth sliding transitions between values.",
+    "cli": "npx ak-ui add sliding-number",
+    "import": "@/components/ui/text/sliding-number",
+    "export": "SlidingNumber",
+    "props": {
+      "number": "number | string",
+      "inView": { "type": "boolean", "default": false },
+      "inViewMargin": { "type": "string", "default": "0px" },
+      "inViewOnce": { "type": "boolean", "default": true },
+      "padStart": { "type": "boolean", "default": false },
+      "decimalSeparator": { "type": "string", "default": "." },
+      "decimalPlaces": "number",
+      "transition": "object"
+    },
+    "example": "<SlidingNumber number={1234} />",
+    "version": "1.0.0"
+  }
+] 
