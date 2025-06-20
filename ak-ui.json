@@ -523,5 +523,159 @@
     },
     "example": "<TooltipProvider><Tooltip><TooltipTrigger><button>Hover me</button></TooltipTrigger><TooltipContent>Tooltip text</TooltipContent></Tooltip></TooltipProvider>",
     "version": "1.0.0"
+  },
+  {
+    "name": "Input",
+    "category": "common",
+    "description": "Styled input field with focus states, validation styling, and file upload support.",
+    "cli": "npx @notacoder15/ak-ui-cli add input",
+    "import": "@/components/ui/common/input",
+    "export": "Input",
+    "props": {
+      "type": { "type": "string", "default": "text" },
+      "placeholder": { "type": "string" },
+      "disabled": { "type": "boolean", "default": false },
+      "required": { "type": "boolean", "default": false },
+      "value": { "type": "string" },
+      "defaultValue": { "type": "string" },
+      "onChange": { "type": "function" },
+      "className": { "type": "string" }
+    },
+    "example": "<Input type=\"email\" placeholder=\"Enter your email\" />",
+    "version": "1.0.0"
+  },
+  {
+    "name": "Label",
+    "category": "common",
+    "description": "Accessible label component with proper form association and disabled states.",
+    "cli": "npx @notacoder15/ak-ui-cli add label",
+    "import": "@/components/ui/common/label",
+    "export": "Label",
+    "props": {
+      "htmlFor": { "type": "string" },
+      "className": { "type": "string" },
+      "children": { "type": "React.ReactNode" }
+    },
+    "example": "<Label htmlFor=\"email\">Email Address</Label>",
+    "version": "1.0.0"
+  },
+  {
+    "name": "Progress",
+    "category": "common",
+    "description": "Animated progress bar with smooth spring transitions and customizable styling.",
+    "cli": "npx @notacoder15/ak-ui-cli add progress",
+    "import": "@/components/ui/common/progress",
+    "export": "Progress",
+    "props": {
+      "value": { "type": "number" },
+      "max": { "type": "number", "default": 100 },
+      "transition": { "type": "object", "default": "{ type: 'spring', stiffness: 100, damping: 30 }" },
+      "className": { "type": "string" }
+    },
+    "example": "<Progress value={65} />",
+    "version": "1.0.0"
+  },
+  {
+    "name": "RadioGroup",
+    "category": "common",
+    "description": "Animated radio button group with smooth scaling effects and proper accessibility.",
+    "cli": "npx @notacoder15/ak-ui-cli add radio-group",
+    "import": "@/components/ui/common/radio-group",
+    "export": "RadioGroup, RadioGroupItem",
+    "props": {
+      "value": { "type": "string" },
+      "defaultValue": { "type": "string" },
+      "onValueChange": { "type": "function" },
+      "disabled": { "type": "boolean", "default": false },
+      "required": { "type": "boolean", "default": false },
+      "transition": { "type": "object", "default": "{ type: 'spring', stiffness: 200, damping: 16 }" },
+      "className": { "type": "string" }
+    },
+    "example": "<RadioGroup value={value} onValueChange={setValue}><RadioGroupItem value=\"option1\" id=\"opt1\" /><Label htmlFor=\"opt1\">Option 1</Label></RadioGroup>",
+    "version": "1.0.0"
+  },
+  {
+    "name": "Separator",
+    "category": "common",
+    "description": "Visual separator element for dividing content with horizontal and vertical orientations.",
+    "cli": "npx @notacoder15/ak-ui-cli add separator",
+    "import": "@/components/ui/common/separator",
+    "export": "Separator",
+    "props": {
+      "orientation": { "type": "enum", "values": ["horizontal", "vertical"], "default": "horizontal" },
+      "decorative": { "type": "boolean", "default": true },
+      "className": { "type": "string" }
+    },
+    "example": "<Separator orientation=\"horizontal\" />",
+    "version": "1.0.0"
+  },
+  {
+    "name": "Skeleton",
+    "category": "common",
+    "description": "Loading placeholder with pulse animation for better perceived performance.",
+    "cli": "npx @notacoder15/ak-ui-cli add skeleton",
+    "import": "@/components/ui/common/skeleton",
+    "export": "Skeleton",
+    "props": {
+      "className": { "type": "string" }
+    },
+    "example": "<Skeleton className=\"h-4 w-32\" />",
+    "version": "1.0.0"
+  },
+  {
+    "name": "Popover",
+    "category": "common",
+    "description": "Floating content container with smooth animations and customizable positioning.",
+    "cli": "npx @notacoder15/ak-ui-cli add popover",
+    "import": "@/components/ui/common/popover",
+    "export": "Popover, PopoverTrigger, PopoverContent, PopoverAnchor",
+    "props": {
+      "open": { "type": "boolean" },
+      "defaultOpen": { "type": "boolean" },
+      "onOpenChange": { "type": "function" },
+      "side": { "type": "enum", "values": ["top", "bottom", "left", "right"], "default": "bottom" },
+      "align": { "type": "enum", "values": ["start", "center", "end"], "default": "center" },
+      "sideOffset": { "type": "number", "default": 4 },
+      "transition": { "type": "object", "default": "{ type: 'spring', stiffness: 300, damping: 25 }" }
+    },
+    "example": "<Popover><PopoverTrigger asChild><Button>Open</Button></PopoverTrigger><PopoverContent><p>Content here</p></PopoverContent></Popover>",
+    "version": "1.0.0"
+  },
+  {
+    "name": "Sheet",
+    "category": "common",
+    "description": "Slide-out panel with smooth animations and multiple entry directions.",
+    "cli": "npx @notacoder15/ak-ui-cli add sheet",
+    "import": "@/components/ui/common/sheet",
+    "export": "Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetFooter, SheetClose",
+    "props": {
+      "open": { "type": "boolean" },
+      "defaultOpen": { "type": "boolean" },
+      "onOpenChange": { "type": "function" },
+      "side": { "type": "enum", "values": ["top", "bottom", "left", "right"], "default": "right" },
+      "overlay": { "type": "boolean", "default": true },
+      "transition": { "type": "object", "default": "{ type: 'spring', stiffness: 150, damping: 25 }" }
+    },
+    "example": "<Sheet><SheetTrigger asChild><Button>Open Sheet</Button></SheetTrigger><SheetContent><SheetHeader><SheetTitle>Title</SheetTitle></SheetHeader></SheetContent></Sheet>",
+    "version": "1.0.0"
+  },
+  {
+    "name": "Sidebar",
+    "category": "common",
+    "description": "Collapsible navigation sidebar with responsive behavior and keyboard shortcuts.",
+    "cli": "npx @notacoder15/ak-ui-cli add sidebar",
+    "import": "@/components/ui/common/sidebar",
+    "export": "SidebarProvider, Sidebar, SidebarTrigger, SidebarContent, SidebarHeader, SidebarFooter, SidebarGroup, SidebarGroupLabel, SidebarGroupContent, SidebarMenu, SidebarMenuItem, SidebarMenuButton, SidebarInset",
+    "dependencies": ["@/components/ui/buttons/button", "@/components/ui/common/input", "@/components/ui/common/separator", "@/components/ui/common/skeleton", "@/components/ui/common/sheet", "@/components/ui/common/tooltip", "@/components/ui/effects/motion-highlight", "@/hooks/use-mobile"],
+    "props": {
+      "side": { "type": "enum", "values": ["left", "right"], "default": "left" },
+      "variant": { "type": "enum", "values": ["sidebar", "floating", "inset"], "default": "sidebar" },
+      "collapsible": { "type": "enum", "values": ["offcanvas", "icon", "none"], "default": "offcanvas" },
+      "defaultOpen": { "type": "boolean", "default": true },
+      "animateOnHover": { "type": "boolean", "default": true },
+      "transition": { "type": "object", "default": "{ type: 'spring', stiffness: 350, damping: 35 }" }
+    },
+    "example": "<SidebarProvider><Sidebar><SidebarContent><SidebarGroup><SidebarGroupContent><SidebarMenu><SidebarMenuItem><SidebarMenuButton>Item</SidebarMenuButton></SidebarMenuItem></SidebarMenu></SidebarGroupContent></SidebarGroup></SidebarContent></Sidebar><SidebarInset>Main content</SidebarInset></SidebarProvider>",
+    "version": "1.0.0"
   }
 ] 

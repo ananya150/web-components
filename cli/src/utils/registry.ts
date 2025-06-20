@@ -190,6 +190,33 @@ export function getNpmDependencies(component: Component): string[] {
     case 'Tooltip':
       dependencies.push('motion');
       break;
+    case 'Input':
+      // No additional npm dependencies beyond React
+      break;
+    case 'Label':
+      dependencies.push('@radix-ui/react-label');
+      break;
+    case 'Progress':
+      dependencies.push('motion', '@radix-ui/react-progress');
+      break;
+    case 'RadioGroup':
+      dependencies.push('motion', '@radix-ui/react-radio-group', 'lucide-react');
+      break;
+    case 'Separator':
+      dependencies.push('@radix-ui/react-separator');
+      break;
+    case 'Skeleton':
+      // No additional npm dependencies beyond React
+      break;
+    case 'Popover':
+      dependencies.push('motion', '@radix-ui/react-popover');
+      break;
+    case 'Sheet':
+      dependencies.push('motion', '@radix-ui/react-dialog', 'class-variance-authority', 'lucide-react');
+      break;
+    case 'Sidebar':
+      dependencies.push('motion', '@radix-ui/react-slot', 'class-variance-authority', 'lucide-react');
+      break;
     default:
       break;
   }

@@ -47,7 +47,31 @@ import {
   TooltipContent,
   TooltipTrigger
 } from "@/components/ui/common/tooltip";
-import { ChevronLeft, ChevronRight, RefreshCw, MoreHorizontal, Settings, User, LogOut, Mail, Phone, MapPin, Calendar, ChevronDown, ChevronRight as ChevronRightIcon, Info, Heart, Star, HelpCircle } from "lucide-react";
+import { Input } from "@/components/ui/common/input";
+import { Label } from "@/components/ui/common/label";
+import { Progress } from "@/components/ui/common/progress";
+import {
+  RadioGroup,
+  RadioGroupItem
+} from "@/components/ui/common/radio-group";
+import { Separator } from "@/components/ui/common/separator";
+import { Skeleton } from "@/components/ui/common/skeleton";
+import {
+  Popover,
+  PopoverTrigger,
+  PopoverContent
+} from "@/components/ui/common/popover";
+import {
+  Sheet,
+  SheetTrigger,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetDescription,
+  SheetFooter,
+  SheetClose
+} from "@/components/ui/common/sheet";
+import { ChevronLeft, ChevronRight, RefreshCw, MoreHorizontal, Settings, User, LogOut, Mail, Phone, MapPin, Calendar, ChevronDown, ChevronRight as ChevronRightIcon, Info, Heart, Star, HelpCircle, Search, Eye, EyeOff, Home, FileText, Users, BarChart3, Cog, Menu } from "lucide-react";
 
 const navigationItems = [
   { id: 'components', label: 'Components', section: 'components', isHeader: true },
@@ -58,6 +82,15 @@ const navigationItems = [
   { id: 'checkbox', label: 'Checkbox', section: 'components' },
   { id: 'accordion', label: 'Accordion', section: 'components' },
   { id: 'tooltip', label: 'Tooltip', section: 'components' },
+  { id: 'input', label: 'Input', section: 'components' },
+  { id: 'label', label: 'Label', section: 'components' },
+  { id: 'progress', label: 'Progress', section: 'components' },
+  { id: 'radio-group', label: 'Radio Group', section: 'components' },
+  { id: 'separator', label: 'Separator', section: 'components' },
+  { id: 'skeleton', label: 'Skeleton', section: 'components' },
+  { id: 'popover', label: 'Popover', section: 'components' },
+  { id: 'sheet', label: 'Sheet', section: 'components' },
+  { id: 'sidebar', label: 'Sidebar', section: 'components' },
 ];
 
 export default function CommonPage() {
@@ -69,6 +102,10 @@ export default function CommonPage() {
     marketing: false,
     updates: true
   });
+  const [inputValue, setInputValue] = useState("");
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [progressValue, setProgressValue] = useState(65);
+  const [radioValue, setRadioValue] = useState("option1");
 
   const scrollToSection = (sectionId: string) => {
     setActiveSection(sectionId);
@@ -570,6 +607,556 @@ export default function CommonPage() {
                       Get help and documentation
                     </TooltipContent>
                   </Tooltip>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Input */}
+          <section id="input" className="space-y-6">
+            <div>
+              <h2 className="text-xl font-semibold mb-4">Input</h2>
+              <p className="text-muted-foreground mb-6">
+                Styled input field with focus states, validation styling, and file upload support.
+              </p>
+              
+              <div className="border rounded-lg bg-card">
+                <div className="h-80 md:h-96 flex flex-wrap gap-8 items-center justify-center p-8">
+                  <div className="space-y-4 w-full max-w-md" key={`input-${refreshKey}`}>
+                    <div className="space-y-2">
+                      <Label htmlFor="email">Email</Label>
+                      <Input 
+                        id="email" 
+                        type="email" 
+                        placeholder="Enter your email"
+                        value={inputValue}
+                        onChange={(e) => setInputValue(e.target.value)}
+                      />
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <Label htmlFor="password">Password</Label>
+                      <div className="relative">
+                        <Input 
+                          id="password" 
+                          type={passwordVisible ? "text" : "password"}
+                          placeholder="Enter your password"
+                        />
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
+                          onClick={() => setPasswordVisible(!passwordVisible)}
+                        >
+                          {passwordVisible ? (
+                            <EyeOff className="h-4 w-4" />
+                          ) : (
+                            <Eye className="h-4 w-4" />
+                          )}
+                        </Button>
+                      </div>
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="search">Search</Label>
+                      <div className="relative">
+                        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                        <Input 
+                          id="search" 
+                          type="search" 
+                          placeholder="Search..."
+                          className="pl-10"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="disabled">Disabled Input</Label>
+                      <Input 
+                        id="disabled" 
+                        type="text" 
+                        placeholder="This input is disabled"
+                        disabled
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Label */}
+          <section id="label" className="space-y-6">
+            <div>
+              <h2 className="text-xl font-semibold mb-4">Label</h2>
+              <p className="text-muted-foreground mb-6">
+                Accessible label component with proper form association and disabled states.
+              </p>
+              
+              <div className="border rounded-lg bg-card">
+                <div className="h-80 md:h-96 flex flex-wrap gap-8 items-center justify-center p-8">
+                  <div className="space-y-6 w-full max-w-md" key={`label-${refreshKey}`}>
+                    <div className="space-y-2">
+                      <Label htmlFor="username">Username</Label>
+                      <Input id="username" placeholder="Enter username" />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="required">Required Field *</Label>
+                      <Input id="required" placeholder="This field is required" required />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="optional">Optional Field</Label>
+                      <Input id="optional" placeholder="This field is optional" />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label>
+                        <Checkbox />
+                        I agree to the terms and conditions
+                      </Label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Progress */}
+          <section id="progress" className="space-y-6">
+            <div>
+              <h2 className="text-xl font-semibold mb-4">Progress</h2>
+              <p className="text-muted-foreground mb-6">
+                Animated progress bar with smooth spring transitions and customizable styling.
+              </p>
+              
+              <div className="border rounded-lg bg-card">
+                <div className="h-80 md:h-96 flex flex-wrap gap-8 items-center justify-center p-8">
+                  <div className="space-y-6 w-full max-w-md" key={`progress-${refreshKey}`}>
+                    <div className="space-y-2">
+                      <div className="flex justify-between text-sm">
+                        <span>Progress</span>
+                        <span>{progressValue}%</span>
+                      </div>
+                      <Progress value={progressValue} />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label>Loading...</Label>
+                      <Progress value={33} />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label>Complete</Label>
+                      <Progress value={100} />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label>Custom Progress</Label>
+                      <Progress value={75} className="h-3" />
+                    </div>
+
+                    <div className="flex gap-2">
+                      <Button 
+                        size="sm" 
+                        onClick={() => setProgressValue(Math.max(0, progressValue - 10))}
+                      >
+                        -10%
+                      </Button>
+                      <Button 
+                        size="sm" 
+                        onClick={() => setProgressValue(Math.min(100, progressValue + 10))}
+                      >
+                        +10%
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Radio Group */}
+          <section id="radio-group" className="space-y-6">
+            <div>
+              <h2 className="text-xl font-semibold mb-4">Radio Group</h2>
+              <p className="text-muted-foreground mb-6">
+                Animated radio button group with smooth scaling effects and proper accessibility.
+              </p>
+              
+              <div className="border rounded-lg bg-card">
+                <div className="h-80 md:h-96 flex flex-wrap gap-8 items-center justify-center p-8">
+                  <div className="space-y-6 w-full max-w-md" key={`radio-${refreshKey}`}>
+                    <div className="space-y-3">
+                      <Label>Choose your plan</Label>
+                      <RadioGroup value={radioValue} onValueChange={setRadioValue}>
+                        <div className="flex items-center space-x-2">
+                          <RadioGroupItem value="option1" id="option1" />
+                          <Label htmlFor="option1">Free Plan - $0/month</Label>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <RadioGroupItem value="option2" id="option2" />
+                          <Label htmlFor="option2">Pro Plan - $10/month</Label>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <RadioGroupItem value="option3" id="option3" />
+                          <Label htmlFor="option3">Enterprise - $50/month</Label>
+                        </div>
+                      </RadioGroup>
+                    </div>
+
+                    <Separator />
+
+                    <div className="space-y-3">
+                      <Label>Notification preferences</Label>
+                      <RadioGroup defaultValue="email">
+                        <div className="flex items-center space-x-2">
+                          <RadioGroupItem value="email" id="email-pref" />
+                          <Label htmlFor="email-pref">Email notifications</Label>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <RadioGroupItem value="push" id="push-pref" />
+                          <Label htmlFor="push-pref">Push notifications</Label>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                          <RadioGroupItem value="none" id="none-pref" />
+                          <Label htmlFor="none-pref">No notifications</Label>
+                        </div>
+                      </RadioGroup>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Separator */}
+          <section id="separator" className="space-y-6">
+            <div>
+              <h2 className="text-xl font-semibold mb-4">Separator</h2>
+              <p className="text-muted-foreground mb-6">
+                Visual separator element for dividing content with horizontal and vertical orientations.
+              </p>
+              
+              <div className="border rounded-lg bg-card">
+                <div className="h-80 md:h-96 flex flex-wrap gap-8 items-center justify-center p-8">
+                  <div className="space-y-6 w-full max-w-md" key={`separator-${refreshKey}`}>
+                    <div className="space-y-4">
+                      <div>
+                        <h3 className="text-sm font-medium">Horizontal Separator</h3>
+                        <p className="text-sm text-muted-foreground">Content above</p>
+                        <Separator className="my-4" />
+                        <p className="text-sm text-muted-foreground">Content below</p>
+                      </div>
+
+                      <div className="flex items-center space-x-4">
+                        <div className="flex-1">
+                          <h4 className="text-sm font-medium">Left Content</h4>
+                          <p className="text-xs text-muted-foreground">Some text here</p>
+                        </div>
+                        <Separator orientation="vertical" className="h-16" />
+                        <div className="flex-1">
+                          <h4 className="text-sm font-medium">Right Content</h4>
+                          <p className="text-xs text-muted-foreground">Some text here</p>
+                        </div>
+                      </div>
+
+                      <div className="space-y-2">
+                        <h4 className="text-sm font-medium">Menu Items</h4>
+                        <div className="space-y-1">
+                          <Button variant="ghost" className="w-full justify-start">Home</Button>
+                          <Button variant="ghost" className="w-full justify-start">About</Button>
+                          <Separator />
+                          <Button variant="ghost" className="w-full justify-start">Settings</Button>
+                          <Button variant="ghost" className="w-full justify-start">Logout</Button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Skeleton */}
+          <section id="skeleton" className="space-y-6">
+            <div>
+              <h2 className="text-xl font-semibold mb-4">Skeleton</h2>
+              <p className="text-muted-foreground mb-6">
+                Loading placeholder with pulse animation for better perceived performance.
+              </p>
+              
+              <div className="border rounded-lg bg-card">
+                <div className="h-80 md:h-96 flex flex-wrap gap-8 items-start justify-center p-8 overflow-hidden">
+                  <div className="space-y-6 w-full max-w-md" key={`skeleton-${refreshKey}`}>
+                    <div className="space-y-4">
+                      <h3 className="text-sm font-medium">Article Card Loading</h3>
+                      <div className="space-y-3">
+                        <Skeleton className="h-24 w-full" />
+                        <div className="space-y-2">
+                          <Skeleton className="h-3 w-full" />
+                          <Skeleton className="h-3 w-4/5" />
+                          <Skeleton className="h-3 w-3/5" />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="space-y-4">
+                      <h3 className="text-sm font-medium">Profile Loading</h3>
+                      <div className="flex items-center space-x-4">
+                        <Skeleton className="h-10 w-10 rounded-full flex-shrink-0" />
+                        <div className="space-y-2 flex-1 min-w-0">
+                          <Skeleton className="h-3 w-24" />
+                          <Skeleton className="h-3 w-16" />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="space-y-4">
+                      <h3 className="text-sm font-medium">List Loading</h3>
+                      <div className="space-y-2">
+                        <Skeleton className="h-6 w-full" />
+                        <Skeleton className="h-6 w-full" />
+                        <Skeleton className="h-6 w-3/4" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Popover */}
+          <section id="popover" className="space-y-6">
+            <div>
+              <h2 className="text-xl font-semibold mb-4">Popover</h2>
+              <p className="text-muted-foreground mb-6">
+                Floating content container with smooth animations and customizable positioning.
+              </p>
+              
+              <div className="border rounded-lg bg-card">
+                <div className="h-80 md:h-96 flex flex-wrap gap-8 items-center justify-center p-8">
+                  <div className="space-y-6 w-full max-w-md" key={`popover-${refreshKey}`}>
+                    <div className="flex flex-wrap gap-4">
+                      <Popover>
+                        <PopoverTrigger asChild>
+                          <Button variant="outline">Open Popover</Button>
+                        </PopoverTrigger>
+                        <PopoverContent>
+                          <div className="space-y-2">
+                            <h4 className="font-medium">Popover Content</h4>
+                            <p className="text-sm text-muted-foreground">
+                              This is a popover with some example content.
+                            </p>
+                          </div>
+                        </PopoverContent>
+                      </Popover>
+
+                      <Popover>
+                        <PopoverTrigger asChild>
+                          <Button>Settings</Button>
+                        </PopoverTrigger>
+                        <PopoverContent side="top">
+                          <div className="space-y-4">
+                            <h4 className="font-medium">Quick Settings</h4>
+                            <div className="space-y-2">
+                              <div className="flex items-center space-x-2">
+                                <Checkbox />
+                                <Label className="text-sm">Enable notifications</Label>
+                              </div>
+                              <div className="flex items-center space-x-2">
+                                <Checkbox />
+                                <Label className="text-sm">Auto-save changes</Label>
+                              </div>
+                            </div>
+                            <Button size="sm" className="w-full">Save</Button>
+                          </div>
+                        </PopoverContent>
+                      </Popover>
+
+                      <Popover>
+                        <PopoverTrigger asChild>
+                          <Button variant="ghost" size="icon">
+                            <Info className="h-4 w-4" />
+                          </Button>
+                        </PopoverTrigger>
+                        <PopoverContent side="right" className="w-80">
+                          <div className="space-y-3">
+                            <div className="flex items-center space-x-2">
+                              <Info className="h-4 w-4 text-blue-500" />
+                              <h4 className="font-medium">Information</h4>
+                            </div>
+                            <p className="text-sm text-muted-foreground">
+                              This popover demonstrates different positioning options and content layouts.
+                              You can customize the side, alignment, and offset.
+                            </p>
+                          </div>
+                        </PopoverContent>
+                      </Popover>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Sheet */}
+          <section id="sheet" className="space-y-6">
+            <div>
+              <h2 className="text-xl font-semibold mb-4">Sheet</h2>
+              <p className="text-muted-foreground mb-6">
+                Slide-out panel with smooth animations and multiple entry directions.
+              </p>
+              
+              <div className="border rounded-lg bg-card">
+                <div className="h-80 md:h-96 flex flex-wrap gap-8 items-center justify-center p-8">
+                  <div className="space-y-6 w-full max-w-md" key={`sheet-${refreshKey}`}>
+                    <div className="flex flex-wrap gap-4">
+                      <Sheet>
+                        <SheetTrigger asChild>
+                          <Button>Open Sheet</Button>
+                        </SheetTrigger>
+                        <SheetContent>
+                          <SheetHeader>
+                            <SheetTitle>Sheet Title</SheetTitle>
+                            <SheetDescription>
+                              This is a sheet that slides in from the right side.
+                            </SheetDescription>
+                          </SheetHeader>
+                          <div className="py-4">
+                            <p className="text-sm text-muted-foreground">
+                              Sheet content goes here. You can add forms, lists, or any other content.
+                            </p>
+                          </div>
+                          <SheetFooter>
+                            <SheetClose asChild>
+                              <Button variant="outline">Cancel</Button>
+                            </SheetClose>
+                            <Button>Save changes</Button>
+                          </SheetFooter>
+                        </SheetContent>
+                      </Sheet>
+
+                      <Sheet>
+                        <SheetTrigger asChild>
+                          <Button variant="outline">Left Sheet</Button>
+                        </SheetTrigger>
+                        <SheetContent side="left">
+                          <SheetHeader>
+                            <SheetTitle>Navigation</SheetTitle>
+                          </SheetHeader>
+                          <div className="py-4 space-y-2">
+                            <Button variant="ghost" className="w-full justify-start">
+                              <Home className="mr-2 h-4 w-4" />
+                              Home
+                            </Button>
+                            <Button variant="ghost" className="w-full justify-start">
+                              <FileText className="mr-2 h-4 w-4" />
+                              Documents
+                            </Button>
+                            <Button variant="ghost" className="w-full justify-start">
+                              <Users className="mr-2 h-4 w-4" />
+                              Team
+                            </Button>
+                          </div>
+                        </SheetContent>
+                      </Sheet>
+
+                      <Sheet>
+                        <SheetTrigger asChild>
+                          <Button variant="secondary">Bottom Sheet</Button>
+                        </SheetTrigger>
+                        <SheetContent side="bottom">
+                          <SheetHeader>
+                            <SheetTitle>Quick Actions</SheetTitle>
+                            <SheetDescription>
+                              Choose an action to perform.
+                            </SheetDescription>
+                          </SheetHeader>
+                          <div className="py-4 flex gap-2">
+                            <Button size="sm">Action 1</Button>
+                            <Button size="sm" variant="outline">Action 2</Button>
+                            <Button size="sm" variant="secondary">Action 3</Button>
+                          </div>
+                        </SheetContent>
+                      </Sheet>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Sidebar */}
+          <section id="sidebar" className="space-y-6">
+            <div>
+              <h2 className="text-xl font-semibold mb-4">Sidebar</h2>
+              <p className="text-muted-foreground mb-6">
+                Collapsible navigation sidebar with responsive behavior and keyboard shortcuts.
+              </p>
+              
+              <div className="border rounded-lg bg-card">
+                <div className="h-80 md:h-96 flex items-center justify-center p-8">
+                  <div className="w-full max-w-4xl h-64 relative" key={`sidebar-${refreshKey}`}>
+                    <div className="h-full border rounded-lg overflow-hidden bg-background relative">
+                      <div className="flex h-full">
+                        {/* Mock Sidebar */}
+                        <div className="w-64 bg-sidebar text-sidebar-foreground border-r flex flex-col">
+                          <div className="p-4 border-b">
+                            <div className="flex items-center space-x-2">
+                              <div className="h-6 w-6 bg-primary rounded"></div>
+                              <span className="font-semibold">App Name</span>
+                            </div>
+                          </div>
+                          <div className="flex-1 p-2">
+                            <div className="space-y-1">
+                              <div className="px-3 py-2 text-xs font-medium text-muted-foreground">
+                                Navigation
+                              </div>
+                              <Button variant="ghost" size="sm" className="w-full justify-start bg-accent text-accent-foreground">
+                                <Home className="mr-2 h-4 w-4" />
+                                Dashboard
+                              </Button>
+                              <Button variant="ghost" size="sm" className="w-full justify-start">
+                                <BarChart3 className="mr-2 h-4 w-4" />
+                                Analytics
+                              </Button>
+                              <Button variant="ghost" size="sm" className="w-full justify-start">
+                                <Users className="mr-2 h-4 w-4" />
+                                Team
+                              </Button>
+                              <Button variant="ghost" size="sm" className="w-full justify-start">
+                                <Cog className="mr-2 h-4 w-4" />
+                                Settings
+                              </Button>
+                            </div>
+                          </div>
+                          <div className="p-2 border-t">
+                            <Button variant="ghost" size="sm" className="w-full justify-start">
+                              <User className="mr-2 h-4 w-4" />
+                              Profile
+                            </Button>
+                          </div>
+                        </div>
+                        {/* Mock Main Content */}
+                        <div className="flex-1 flex items-center justify-center bg-background">
+                          <div className="text-center space-y-2">
+                            <Button variant="outline" size="sm">
+                              <Menu className="mr-2 h-4 w-4" />
+                              Toggle Sidebar
+                            </Button>
+                            <p className="text-sm text-muted-foreground">
+                              Main content area
+                            </p>
+                            <p className="text-xs text-muted-foreground">
+                              This is a static demo of the sidebar component
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
