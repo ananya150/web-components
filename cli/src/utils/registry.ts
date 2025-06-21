@@ -63,13 +63,25 @@ export async function loadRegistry(): Promise<ComponentRegistry> {
 
 export async function getComponent(name: string): Promise<Component | null> {
   const registry = await loadRegistry();
-  return registry.find(component => 
-    component.name.toLowerCase() === name.toLowerCase() ||
-    // Also match by CLI command (e.g., "copy-button" matches "CopyButton")
-    component.cli.toLowerCase().includes(name.toLowerCase()) ||
-    // Convert PascalCase to kebab-case for matching
+  
+  // First, try exact name match (highest priority)
+  const exactMatch = registry.find(component => 
+    component.name.toLowerCase() === name.toLowerCase()
+  );
+  if (exactMatch) return exactMatch;
+  
+  // Then try kebab-case conversion match
+  const kebabMatch = registry.find(component =>
     component.name.replace(/([A-Z])/g, '-$1').toLowerCase().slice(1) === name.toLowerCase()
-  ) || null;
+  );
+  if (kebabMatch) return kebabMatch;
+  
+  // Finally, try CLI command match (lowest priority to avoid conflicts)
+  const cliMatch = registry.find(component =>
+    component.cli.toLowerCase().includes(name.toLowerCase())
+  );
+  
+  return cliMatch || null;
 }
 
 export async function getComponentsByCategory(category: string): Promise<Component[]> {
@@ -234,6 +246,24 @@ export function getNpmDependencies(component: Component): string[] {
       break;
     case 'PlayfulTodolist':
       dependencies.push('motion', '@radix-ui/react-checkbox', '@radix-ui/react-label');
+      break;
+    case 'MotionGrid':
+      dependencies.push('motion');
+      break;
+    case 'PinList':
+      dependencies.push('motion', 'lucide-react');
+      break;
+    case 'ScrollProgress':
+      dependencies.push('motion');
+      break;
+    case 'SpringElement':
+      dependencies.push('motion');
+      break;
+    case 'StarsScrollingWheel':
+      dependencies.push('motion');
+      break;
+    case 'Icon':
+      dependencies.push('motion');
       break;
     default:
       break;

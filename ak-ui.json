@@ -423,6 +423,126 @@
     "version": "1.0.0"
   },
   {
+    "name": "MotionGrid",
+    "category": "custom",
+    "description": "An animated grid component that cycles through different patterns with smooth transitions. Perfect for loading states or decorative animations.",
+    "cli": "npx @notacoder15/ak-ui-cli add motion-grid",
+    "import": "@/components/ui/custom/motion-grid",
+    "export": "MotionGrid, MotionGridProps, Coordinate, Coordinates",
+    "props": {
+      "gridSize": { "type": "array", "description": "Tuple of [cols, rows] for grid dimensions" },
+      "frames": { "type": "array", "description": "Array of coordinate arrays representing animation frames" },
+      "duration": { "type": "number", "default": 200 },
+      "animate": { "type": "boolean", "default": true },
+      "cellClassName": "string",
+      "cellActiveClassName": "string",
+      "cellInactiveClassName": "string",
+      "className": "string"
+    },
+    "example": "<MotionGrid gridSize={[5, 5]} frames={[[[1, 1], [2, 1]], [[1, 2], [2, 2]]]} duration={800} />",
+    "version": "1.0.0"
+  },
+  {
+    "name": "PinList",
+    "category": "custom",
+    "description": "An interactive list component where items can be pinned/unpinned with smooth layout animations and proper z-index management.",
+    "cli": "npx @notacoder15/ak-ui-cli add pin-list",
+    "import": "@/components/ui/custom/pin-list",
+    "export": "PinList, PinListProps, PinListItem",
+    "props": {
+      "items": { "type": "array", "description": "Array of PinListItem objects with id, name, info, icon, and pinned properties" },
+      "labels": { "type": "object", "default": "{ pinned: 'Pinned Items', unpinned: 'All Items' }" },
+      "transition": { "type": "object", "default": "{ stiffness: 320, damping: 20, mass: 0.8, type: 'spring' }" },
+      "labelMotionProps": { "type": "object" },
+      "className": "string",
+      "labelClassName": "string",
+      "pinnedSectionClassName": "string",
+      "unpinnedSectionClassName": "string",
+      "zIndexResetDelay": { "type": "number", "default": 500 }
+    },
+    "example": "<PinList items={[{id: 1, name: 'Item', info: 'Description', icon: HomeIcon, pinned: false}]} />",
+    "version": "1.0.0"
+  },
+  {
+    "name": "ScrollProgress",
+    "category": "custom",
+    "description": "A scroll progress indicator that shows reading progress with smooth spring animations. Works for both window scroll and container scroll.",
+    "cli": "npx @notacoder15/ak-ui-cli add scroll-progress",
+    "import": "@/components/ui/custom/scroll-progress",
+    "export": "ScrollProgress, ScrollProgressProps",
+    "props": {
+      "progressProps": { "type": "object", "description": "Props passed to the progress bar motion.div" },
+      "className": "string",
+      "children": "React.ReactNode"
+    },
+    "example": "<ScrollProgress><div>Scrollable content here</div></ScrollProgress>",
+    "version": "1.0.0"
+  },
+  {
+    "name": "SpringElement",
+    "category": "custom",
+    "description": "A draggable element connected with an animated spring path that follows the drag motion with realistic spring physics.",
+    "cli": "npx @notacoder15/ak-ui-cli add spring-element",
+    "import": "@/components/ui/custom/spring-element",
+    "export": "SpringElement",
+    "props": {
+      "children": "React.ReactElement",
+      "className": "string",
+      "springClassName": "string",
+      "dragElastic": { "type": "number", "default": 0.2 },
+      "springConfig": { "type": "object", "default": "{ stiffness: 200, damping: 16 }" },
+      "springPathConfig": { "type": "object", "description": "Configuration for spring path generation including coilCount, amplitude, etc." }
+    },
+    "example": "<SpringElement><div className=\"w-16 h-16 bg-primary rounded-full\">Drag me</div></SpringElement>",
+    "version": "1.0.0"
+  },
+  {
+    "name": "StarsScrollingWheel",
+    "category": "custom",
+    "description": "An animated counter with scrolling wheel effect that features star animations and particle effects when reaching the target value.",
+    "cli": "npx @notacoder15/ak-ui-cli add stars-scrolling-wheel",
+    "import": "@/components/ui/custom/stars-scrolling-wheel",
+    "export": "StarsScrollingWheel, StarsScrollingWheelProps, Star, StarIcon",
+    "dependencies": ["@/components/ui/icons/icon"],
+    "props": {
+      "stars": { "type": "number", "description": "Target number to count up to" },
+      "step": { "type": "number", "default": 100 },
+      "itemHeight": { "type": "number", "default": 48 },
+      "sideItemsCount": { "type": "number", "default": 2 },
+      "transition": { "type": "object", "default": "{ stiffness: 90, damping: 30 }" },
+      "inView": { "type": "boolean", "default": false },
+      "inViewOnce": { "type": "boolean", "default": true },
+      "inViewMargin": "string",
+      "delay": { "type": "number", "default": 0 },
+      "className": "string"
+    },
+    "example": "<StarsScrollingWheel stars={1500} step={50} inView delay={500} />",
+    "version": "1.0.0"
+  },
+  {
+    "name": "Icon",
+    "category": "icons",
+    "description": "A comprehensive icon animation system with hover, tap, and custom animation support. Provides animated icon wrappers with Motion.js integration.",
+    "cli": "npx @notacoder15/ak-ui-cli add icon",
+    "import": "@/components/ui/icons/icon",
+    "export": "AnimateIcon, IconWrapper, useAnimateIconContext, getVariants, pathClassName, staticAnimations",
+    "props": {
+      "animate": { "type": "boolean | string" },
+      "animateOnHover": { "type": "boolean | string", "default": false },
+      "animateOnTap": { "type": "boolean | string", "default": false },
+      "animation": { "type": "string", "default": "default" },
+      "loop": { "type": "boolean", "default": false },
+      "loopDelay": { "type": "number", "default": 0 },
+      "size": { "type": "number", "default": 28 },
+      "onAnimateStart": "function",
+      "onAnimateEnd": "function",
+      "onAnimateChange": "function",
+      "className": "string"
+    },
+    "example": "<IconWrapper icon={HeartIcon} animate animateOnHover size={32} />",
+    "version": "1.0.0"
+  },
+  {
     "name": "DropdownMenu",
     "category": "common",
     "description": "A menu component with animated highlights and comprehensive item types including checkboxes, radio groups, and submenus.",

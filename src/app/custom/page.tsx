@@ -5,8 +5,13 @@ import { AvatarGroup, AvatarGroupTooltip } from "@/components/ui/custom/avatar-g
 import { CodeEditor } from "@/components/ui/custom/code-editor";
 import { ManagementBar } from "@/components/ui/custom/management-bar";
 import { PlayfulTodolist } from "@/components/ui/custom/playful-todolist";
+import { MotionGrid } from "@/components/ui/custom/motion-grid";
+import { PinList } from "@/components/ui/custom/pin-list";
+import { ScrollProgress } from "@/components/ui/custom/scroll-progress";
+import { SpringElement } from "@/components/ui/custom/spring-element";
+import { StarsScrollingWheel } from "@/components/ui/custom/stars-scrolling-wheel";
 
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Home, User, Settings, Mail, Heart, Bookmark } from "lucide-react";
 import { Button } from "@/components/ui/buttons/button";
 
 // Sample avatar data for demonstrations
@@ -19,6 +24,26 @@ const sampleUsers = [
   { name: "Frank Miller", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face&auto=format" },
   { name: "Grace Wilson", avatar: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=40&h=40&fit=crop&crop=face&auto=format" },
   { name: "Henry Taylor", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=40&h=40&fit=crop&crop=face&auto=format" },
+];
+
+// Sample data for PinList component
+const samplePinItems = [
+  { id: 1, name: "Dashboard", info: "Main overview", icon: Home, pinned: true },
+  { id: 2, name: "Profile", info: "User settings", icon: User, pinned: false },
+  { id: 3, name: "Settings", info: "App preferences", icon: Settings, pinned: true },
+  { id: 4, name: "Messages", info: "Communication", icon: Mail, pinned: false },
+  { id: 5, name: "Favorites", info: "Liked items", icon: Heart, pinned: false },
+  { id: 6, name: "Bookmarks", info: "Saved content", icon: Bookmark, pinned: true },
+];
+
+// Sample grid frames for MotionGrid  
+const sampleGridFrames: [number, number][][] = [
+  [[1, 1], [2, 1], [3, 1]],
+  [[1, 1], [1, 2], [1, 3]],
+  [[2, 0], [2, 1], [2, 2], [2, 3], [2, 4]],
+  [[0, 2], [1, 2], [2, 2], [3, 2], [4, 2]],
+  [[0, 0], [1, 1], [2, 2], [3, 3], [4, 4]],
+  [[4, 0], [3, 1], [2, 2], [1, 3], [0, 4]],
 ];
 
 // Avatar component for displaying individual avatars
@@ -55,6 +80,11 @@ const navigationItems = [
   { id: 'code-editor', label: 'Code Editor', section: 'components' },
   { id: 'management-bar', label: 'Management Bar', section: 'components' },
   { id: 'playful-todolist', label: 'Playful Todo List', section: 'components' },
+  { id: 'motion-grid', label: 'Motion Grid', section: 'components' },
+  { id: 'pin-list', label: 'Pin List', section: 'components' },
+  { id: 'scroll-progress', label: 'Scroll Progress', section: 'components' },
+  { id: 'spring-element', label: 'Spring Element', section: 'components' },
+  { id: 'stars-scrolling-wheel', label: 'Stars Scrolling Wheel', section: 'components' },
 ];
 
 export default function CustomPage() {
@@ -337,6 +367,188 @@ export default function CustomPage() {
                     <p className="text-sm text-muted-foreground">
                       Features custom animated strikethrough effects with SVG paths, 
                       smooth transitions, and playful todo items. Check off items to see the animation!
+                    </p>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Motion Grid */}
+          <section id="motion-grid" className="space-y-6">
+            <div>
+              <h2 className="text-xl font-semibold mb-4">Motion Grid</h2>
+              <p className="text-muted-foreground mb-6">
+                An animated grid component that cycles through different patterns with smooth transitions.
+              </p>
+              
+              <div className="border rounded-lg bg-card">
+                <div className="h-80 md:h-96 flex flex-col gap-8 items-center justify-center p-8">
+                  
+                  {/* Motion Grid Demo */}
+                  <div className="flex flex-col items-center gap-4">
+                    <h3 className="text-sm font-medium text-muted-foreground">Animated Pattern Grid</h3>
+                    <MotionGrid 
+                      gridSize={[5, 5]} 
+                      frames={sampleGridFrames}
+                      duration={800}
+                      className="p-4 bg-muted/50 rounded-lg"
+                    />
+                  </div>
+
+                  {/* Description */}
+                  <div className="text-center max-w-md">
+                    <p className="text-sm text-muted-foreground">
+                      Displays animated patterns that transition smoothly between different configurations. 
+                      Perfect for loading states or decorative animations.
+                    </p>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Pin List */}
+          <section id="pin-list" className="space-y-6">
+            <div>
+              <h2 className="text-xl font-semibold mb-4">Pin List</h2>
+              <p className="text-muted-foreground mb-6">
+                An interactive list component where items can be pinned/unpinned with smooth layout animations.
+              </p>
+              
+              <div className="border rounded-lg bg-card">
+                <div className="h-80 md:h-96 flex flex-col gap-4 items-center justify-start p-8 overflow-hidden">
+                  
+                  {/* Pin List Demo */}
+                  <div className="flex flex-col items-center gap-4 w-full">
+                    <h3 className="text-sm font-medium text-muted-foreground">Interactive Pin List</h3>
+                    <div className="w-full max-w-sm max-h-64 overflow-y-auto">
+                      <PinList items={samplePinItems} />
+                    </div>
+                  </div>
+
+                  {/* Description */}
+                  <div className="text-center max-w-md">
+                    <p className="text-sm text-muted-foreground">
+                      Click items to pin/unpin them. Pinned items appear at the top with smooth layout transitions.
+                    </p>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Scroll Progress */}
+          <section id="scroll-progress" className="space-y-6">
+            <div>
+              <h2 className="text-xl font-semibold mb-4">Scroll Progress</h2>
+              <p className="text-muted-foreground mb-6">
+                A scroll progress indicator that shows reading progress with smooth spring animations.
+              </p>
+              
+              <div className="border rounded-lg bg-card">
+                <div className="h-80 md:h-96 flex flex-col gap-8 items-center justify-center p-8">
+                  
+                  {/* Scroll Progress Demo */}
+                  <div className="flex flex-col items-center gap-4">
+                    <h3 className="text-sm font-medium text-muted-foreground">Scroll Progress Bar</h3>
+                    <div className="w-full max-w-md h-64 relative border rounded-lg overflow-hidden">
+                      <ScrollProgress 
+                        className="h-full"
+                        progressProps={{
+                          className: "absolute top-0 inset-x-0 h-1 bg-blue-500 origin-left z-10"
+                        }}
+                      >
+                        <div className="p-6 space-y-4">
+                          <h4 className="font-semibold">Scrollable Content</h4>
+                          <p className="text-sm text-muted-foreground">
+                            Scroll through this content to see the progress bar at the top fill up.
+                          </p>
+                          {Array.from({ length: 20 }, (_, i) => (
+                            <p key={i} className="text-sm text-muted-foreground">
+                              This is paragraph {i + 1} of the scrollable content. Keep scrolling to see more content and watch the progress bar fill up smoothly.
+                            </p>
+                          ))}
+                        </div>
+                      </ScrollProgress>
+                    </div>
+                  </div>
+
+                  {/* Description */}
+                  <div className="text-center max-w-md">
+                    <p className="text-sm text-muted-foreground">
+                      Shows reading progress with a smooth animated bar. Works for both window scroll and container scroll.
+                    </p>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Spring Element */}
+          <section id="spring-element" className="space-y-6">
+            <div>
+              <h2 className="text-xl font-semibold mb-4">Spring Element</h2>
+              <p className="text-muted-foreground mb-6">
+                A draggable element connected with an animated spring path that follows the drag motion.
+              </p>
+              
+              <div className="border rounded-lg bg-card">
+                <div className="h-80 md:h-96 flex flex-col gap-8 items-center justify-center p-8 relative">
+                  
+                  {/* Spring Element Demo */}
+                  <div className="flex flex-col items-center gap-4">
+                    <h3 className="text-sm font-medium text-muted-foreground">Draggable Spring Element</h3>
+                    <SpringElement className="relative z-10">
+                      <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-bold">
+                        Drag
+                      </div>
+                    </SpringElement>
+                  </div>
+
+                  {/* Description */}
+                  <div className="text-center max-w-md">
+                    <p className="text-sm text-muted-foreground">
+                      Drag the element around to see the spring animation. The spring path connects the original position with the dragged position.
+                    </p>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Stars Scrolling Wheel */}
+          <section id="stars-scrolling-wheel" className="space-y-6">
+            <div>
+              <h2 className="text-xl font-semibold mb-4">Stars Scrolling Wheel</h2>
+              <p className="text-muted-foreground mb-6">
+                An animated counter that scrolls through numbers with star animations when reaching the target.
+              </p>
+              
+              <div className="border rounded-lg bg-card">
+                <div className="h-80 md:h-96 flex flex-col gap-8 items-center justify-center p-8">
+                  
+                  {/* Stars Scrolling Wheel Demo */}
+                  <div className="flex flex-col items-center gap-4">
+                    <h3 className="text-sm font-medium text-muted-foreground">Animated Star Counter</h3>
+                    <StarsScrollingWheel 
+                      stars={1500} 
+                      step={50}
+                      inView={true}
+                      delay={500}
+                      className="border rounded-lg"
+                    />
+                  </div>
+
+                  {/* Description */}
+                  <div className="text-center max-w-md">
+                    <p className="text-sm text-muted-foreground">
+                      Animated number counter with a scrolling wheel effect. Features a star animation when reaching the target value.
                     </p>
                   </div>
 
