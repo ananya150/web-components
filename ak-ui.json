@@ -395,6 +395,34 @@
     "version": "1.0.0"
   },
   {
+    "name": "ManagementBar",
+    "category": "custom",
+    "description": "An interactive management bar with pagination, action buttons, and smooth animations. Perfect for data management interfaces.",
+    "cli": "npx @notacoder15/ak-ui-cli add management-bar",
+    "import": "@/components/ui/custom/management-bar",
+    "export": "ManagementBar",
+    "dependencies": ["@/components/ui/text/sliding-number"],
+    "props": {
+      "className": "string"
+    },
+    "example": "<ManagementBar />",
+    "version": "1.0.0"
+  },
+  {
+    "name": "PlayfulTodolist",
+    "category": "custom",
+    "description": "A fun and interactive todo list with animated strikethrough effects using SVG paths and smooth animations.",
+    "cli": "npx @notacoder15/ak-ui-cli add playful-todolist",
+    "import": "@/components/ui/custom/playful-todolist",
+    "export": "PlayfulTodolist",
+    "dependencies": ["@/components/ui/common/checkbox", "@/components/ui/common/label"],
+    "props": {
+      "className": "string"
+    },
+    "example": "<PlayfulTodolist />",
+    "version": "1.0.0"
+  },
+  {
     "name": "DropdownMenu",
     "category": "common",
     "description": "A menu component with animated highlights and comprehensive item types including checkboxes, radio groups, and submenus.",

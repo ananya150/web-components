@@ -229,6 +229,12 @@ export function getNpmDependencies(component: Component): string[] {
     case 'MotionHighlight':
       dependencies.push('motion');
       break;
+    case 'ManagementBar':
+      dependencies.push('motion', 'lucide-react', '@radix-ui/react-slot', 'class-variance-authority');
+      break;
+    case 'PlayfulTodolist':
+      dependencies.push('motion', '@radix-ui/react-checkbox', '@radix-ui/react-label');
+      break;
     default:
       break;
   }

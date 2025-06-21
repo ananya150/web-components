@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import { AvatarGroup, AvatarGroupTooltip } from "@/components/ui/custom/avatar-group";
 import { CodeEditor } from "@/components/ui/custom/code-editor";
+import { ManagementBar } from "@/components/ui/custom/management-bar";
+import { PlayfulTodolist } from "@/components/ui/custom/playful-todolist";
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/buttons/button";
@@ -51,6 +53,8 @@ const navigationItems = [
   { id: 'components', label: 'Components', section: 'components', isHeader: true },
   { id: 'avatar-group', label: 'Avatar Group', section: 'components' },
   { id: 'code-editor', label: 'Code Editor', section: 'components' },
+  { id: 'management-bar', label: 'Management Bar', section: 'components' },
+  { id: 'playful-todolist', label: 'Playful Todo List', section: 'components' },
 ];
 
 export default function CustomPage() {
@@ -274,6 +278,66 @@ export default function CustomPage() {
 
                         export { MyComponent, type MyComponentProps };`}
                     </CodeEditor>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Management Bar */}
+          <section id="management-bar" className="space-y-6">
+            <div>
+              <h2 className="text-xl font-semibold mb-4">Management Bar</h2>
+              <p className="text-muted-foreground mb-6">
+                An interactive management bar with pagination, action buttons, and smooth animations. Perfect for data management interfaces.
+              </p>
+              
+              <div className="border rounded-lg bg-card">
+                <div className="h-80 md:h-96 flex flex-col gap-8 items-center justify-center p-8">
+                  
+                  {/* Management Bar Demo */}
+                  <div className="flex flex-col items-center gap-4">
+                    <h3 className="text-sm font-medium text-muted-foreground">Interactive Management Bar</h3>
+                    <ManagementBar />
+                  </div>
+
+                  {/* Description */}
+                  <div className="text-center max-w-md">
+                    <p className="text-sm text-muted-foreground">
+                      Features pagination controls, expandable action buttons with hover animations, 
+                      and a keyboard shortcut indicator. Try hovering over the action buttons!
+                    </p>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Playful Todo List */}
+          <section id="playful-todolist" className="space-y-6">
+            <div>
+              <h2 className="text-xl font-semibold mb-4">Playful Todo List</h2>
+              <p className="text-muted-foreground mb-6">
+                A fun and interactive todo list with animated strikethrough effects using SVG paths and smooth animations.
+              </p>
+              
+              <div className="border rounded-lg bg-card">
+                <div className="h-80 md:h-96 flex flex-col gap-8 items-center justify-center p-8">
+                  
+                  {/* Playful Todo List Demo */}
+                  <div className="flex flex-col items-center gap-4">
+                    <h3 className="text-sm font-medium text-muted-foreground">Animated Todo List</h3>
+                    <PlayfulTodolist />
+                  </div>
+
+                  {/* Description */}
+                  <div className="text-center max-w-md">
+                    <p className="text-sm text-muted-foreground">
+                      Features custom animated strikethrough effects with SVG paths, 
+                      smooth transitions, and playful todo items. Check off items to see the animation!
+                    </p>
                   </div>
 
                 </div>
