@@ -117,12 +117,22 @@ export const addCommand = new Command('add')
   });
 
 async function installComponentFiles(component: { name: string; category: string; import: string }): Promise<void> {
-  // Extract the full import path structure
+  // Get project configuration to determine correct paths
+  const config = await detectProjectStructure();
+  
+  // Extract the import path structure
   const importPath = component.import.replace('@/', '');
   
-  // Use the full import path to determine the target directory structure
-  // e.g., "@/components/ui/custom/avatar-group" -> "components/ui/custom/avatar-group.tsx"
-  const targetPath = path.join(process.cwd(), importPath + '.tsx');
+  // Determine the correct target path based on project structure
+  let targetPath: string;
+  
+  if (config.srcDir === 'src') {
+    // For projects with src directory, place components inside src
+    targetPath = path.join(process.cwd(), 'src', importPath + '.tsx');
+  } else {
+    // For projects without src directory, place components in root
+    targetPath = path.join(process.cwd(), importPath + '.tsx');
+  }
   
   // Download and save the component file
   await downloadComponentFile(importPath, targetPath);

@@ -994,5 +994,114 @@
     },
     "example": "<ToggleGroup type=\"single\" value={value} onValueChange={setValue}><ToggleGroupItem value=\"bold\"><Bold /></ToggleGroupItem><ToggleGroupItem value=\"italic\"><Italic /></ToggleGroupItem></ToggleGroup>",
     "version": "1.0.0"
+  },
+  {
+    "name": "StarsBackground",
+    "category": "backgrounds",
+    "description": "An animated starfield background with multiple layers of stars moving at different speeds. Features mouse parallax interaction and customizable colors.",
+    "cli": "npx @notacoder15/ak-ui-cli add stars-background",
+    "import": "@/components/ui/backgrounds/stars",
+    "export": "StarsBackground, StarLayer",
+    "props": {
+      "children": "React.ReactNode",
+      "factor": { "type": "number", "default": 0.05 },
+      "speed": { "type": "number", "default": 50 },
+      "transition": { "type": "object", "default": "{ stiffness: 50, damping: 20 }" },
+      "starColor": { "type": "string", "default": "#fff" },
+      "pointerEvents": { "type": "boolean", "default": true },
+      "className": "string"
+    },
+    "example": "<StarsBackground starColor=\"#ffffff\" speed={50} factor={0.05}><div>Content over stars</div></StarsBackground>",
+    "version": "1.0.0"
+  },
+  {
+    "name": "GradientBackground",
+    "category": "backgrounds",
+    "description": "A smooth animated gradient background that cycles through different positions creating a flowing color effect.",
+    "cli": "npx @notacoder15/ak-ui-cli add gradient-background",
+    "import": "@/components/ui/backgrounds/gradient",
+    "export": "GradientBackground",
+    "props": {
+      "transition": { "type": "object", "default": "{ duration: 15, ease: 'easeInOut', repeat: Infinity }" },
+      "className": "string"
+    },
+    "example": "<GradientBackground className=\"w-full h-full\" />",
+    "version": "1.0.0"
+  },
+  {
+    "name": "BubbleBackground",
+    "category": "backgrounds",
+    "description": "An interactive bubble background with floating orbs that respond to mouse movement and create organic flowing animations.",
+    "cli": "npx @notacoder15/ak-ui-cli add bubble-background",
+    "import": "@/components/ui/backgrounds/bubble",
+    "export": "BubbleBackground",
+    "props": {
+      "children": "React.ReactNode",
+      "interactive": { "type": "boolean", "default": false },
+      "transition": { "type": "object", "default": "{ stiffness: 100, damping: 20 }" },
+      "colors": {
+        "type": "object",
+        "default": "{ first: '18,113,255', second: '221,74,255', third: '0,220,255', fourth: '200,50,50', fifth: '180,180,50', sixth: '140,100,255' }"
+      },
+      "className": "string"
+    },
+    "example": "<BubbleBackground interactive={true}><div>Content over bubbles</div></BubbleBackground>",
+    "version": "1.0.0"
+  },
+  {
+    "name": "HexagonBackground",
+    "category": "backgrounds",
+    "description": "A geometric hexagon pattern background with hover effects and responsive grid layout that adapts to screen size.",
+    "cli": "npx @notacoder15/ak-ui-cli add hexagon-background",
+    "import": "@/components/ui/backgrounds/hexagon",
+    "export": "HexagonBackground",
+    "props": {
+      "children": "React.ReactNode",
+      "hexagonProps": "React.ComponentProps<'div'>",
+      "hexagonSize": { "type": "number", "default": 75 },
+      "hexagonMargin": { "type": "number", "default": 3 },
+      "className": "string"
+    },
+    "example": "<HexagonBackground hexagonSize={60} hexagonMargin={2}><div>Content over hexagons</div></HexagonBackground>",
+    "version": "1.0.0"
+  },
+  {
+    "name": "FireworksBackground",
+    "category": "backgrounds",
+    "description": "An animated fireworks display with particle explosions, trails, and click interaction for launching custom fireworks.",
+    "cli": "npx @notacoder15/ak-ui-cli add fireworks-background",
+    "import": "@/components/ui/backgrounds/fireworks",
+    "export": "FireworksBackground",
+    "props": {
+      "children": "React.ReactNode",
+      "canvasProps": "React.ComponentProps<'canvas'>",
+      "population": { "type": "number", "default": 1 },
+      "color": { "type": "string | string[]", "description": "Single color or array of colors for fireworks" },
+      "fireworkSpeed": { "type": "object | number", "default": "{ min: 4, max: 8 }" },
+      "fireworkSize": { "type": "object | number", "default": "{ min: 2, max: 5 }" },
+      "particleSpeed": { "type": "object | number", "default": "{ min: 2, max: 7 }" },
+      "particleSize": { "type": "object | number", "default": "{ min: 1, max: 5 }" },
+      "className": "string"
+    },
+    "example": "<FireworksBackground population={2} color={['#ff0000', '#00ff00', '#0000ff']}><div>Click anywhere for fireworks</div></FireworksBackground>",
+    "version": "1.0.0"
+  },
+  {
+    "name": "HoleBackground",
+    "category": "backgrounds",
+    "description": "A mesmerizing tunnel effect with radiating lines and floating particles creating a depth illusion and hypnotic animation.",
+    "cli": "npx @notacoder15/ak-ui-cli add hole-background",
+    "import": "@/components/ui/backgrounds/hole",
+    "export": "HoleBackground",
+    "props": {
+      "children": "React.ReactNode",
+      "strokeColor": { "type": "string", "default": "#737373" },
+      "numberOfLines": { "type": "number", "default": 50 },
+      "numberOfDiscs": { "type": "number", "default": 50 },
+      "particleRGBColor": { "type": "array", "default": "[255, 255, 255]" },
+      "className": "string"
+    },
+    "example": "<HoleBackground strokeColor=\"#737373\" numberOfLines={40} particleRGBColor={[255, 255, 255]}><div>Content over tunnel effect</div></HoleBackground>",
+    "version": "1.0.0"
   }
 ] 

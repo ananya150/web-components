@@ -277,6 +277,24 @@ export function getNpmDependencies(component: Component): string[] {
     case 'Files':
       dependencies.push('motion', '@radix-ui/react-accordion', 'lucide-react');
       break;
+    case 'StarsBackground':
+      dependencies.push('motion');
+      break;
+    case 'GradientBackground':
+      dependencies.push('motion');
+      break;
+    case 'BubbleBackground':
+      dependencies.push('motion');
+      break;
+    case 'HexagonBackground':
+      // No additional npm dependencies beyond React
+      break;
+    case 'FireworksBackground':
+      // No additional npm dependencies beyond React (uses Canvas API)
+      break;
+    case 'HoleBackground':
+      dependencies.push('motion');
+      break;
     default:
       break;
   }
