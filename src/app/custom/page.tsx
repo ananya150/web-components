@@ -3,6 +3,10 @@
 import { useState, useEffect } from "react";
 import { AvatarGroup, AvatarGroupTooltip } from "@/components/ui/custom/avatar-group";
 import { CodeEditor } from "@/components/ui/custom/code-editor";
+import { CodeTabs } from "@/components/ui/custom/code-tabs";
+import { Counter } from "@/components/ui/custom/counter";
+import { CursorProvider, Cursor, CursorFollow } from "@/components/ui/custom/cursor";
+import { Files, Folder, File } from "@/components/ui/custom/files";
 import { ManagementBar } from "@/components/ui/custom/management-bar";
 import { PlayfulTodolist } from "@/components/ui/custom/playful-todolist";
 import { MotionGrid } from "@/components/ui/custom/motion-grid";
@@ -46,6 +50,26 @@ const sampleGridFrames: [number, number][][] = [
   [[4, 0], [3, 1], [2, 2], [1, 3], [0, 4]],
 ];
 
+// Counter Demo Component
+function CounterDemo() {
+  const [count, setCount] = useState(0);
+  return (
+    <Counter 
+      number={count} 
+      setNumber={setCount}
+      slidingNumberProps={{ className: "text-xl font-semibold" }}
+    />
+  );
+}
+
+// Sample code snippets for CodeTabs
+const sampleCodeSnippets = {
+  'npm': 'npm install ak-ui-components',
+  'yarn': 'yarn add ak-ui-components', 
+  'pnpm': 'pnpm add ak-ui-components',
+  'bun': 'bun add ak-ui-components'
+};
+
 // Avatar component for displaying individual avatars
 function Avatar({ src, alt, size = 'default' }: { src: string; alt: string; size?: 'sm' | 'default' | 'lg' }) {
   const sizeClasses = {
@@ -78,6 +102,10 @@ const navigationItems = [
   { id: 'components', label: 'Components', section: 'components', isHeader: true },
   { id: 'avatar-group', label: 'Avatar Group', section: 'components' },
   { id: 'code-editor', label: 'Code Editor', section: 'components' },
+  { id: 'code-tabs', label: 'Code Tabs', section: 'components' },
+  { id: 'counter', label: 'Counter', section: 'components' },
+  { id: 'cursor', label: 'Cursor', section: 'components' },
+  { id: 'files', label: 'Files', section: 'components' },
   { id: 'management-bar', label: 'Management Bar', section: 'components' },
   { id: 'playful-todolist', label: 'Playful Todo List', section: 'components' },
   { id: 'motion-grid', label: 'Motion Grid', section: 'components' },
@@ -308,6 +336,167 @@ export default function CustomPage() {
 
                         export { MyComponent, type MyComponentProps };`}
                     </CodeEditor>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Code Tabs */}
+          <section id="code-tabs" className="space-y-6">
+            <div>
+              <h2 className="text-xl font-semibold mb-4">Code Tabs</h2>
+              <p className="text-muted-foreground mb-6">
+                A tabbed code viewer with syntax highlighting, copy functionality, and theme support for displaying multiple code snippets.
+              </p>
+              
+              <div className="border rounded-lg bg-card">
+                <div className="h-80 md:h-96 flex flex-col gap-8 items-center justify-center p-8">
+                  
+                  {/* Code Tabs Demo */}
+                  <div className="flex flex-col items-center gap-4 w-full">
+                    <h3 className="text-sm font-medium text-muted-foreground">Installation Commands</h3>
+                    <div className="w-full max-w-md">
+                      <CodeTabs
+                        codes={sampleCodeSnippets}
+                        lang="bash"
+                        copyButton={true}
+                        defaultValue="npm"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Description */}
+                  <div className="text-center max-w-md">
+                    <p className="text-sm text-muted-foreground">
+                      Syntax highlighting with theme support, copy functionality, and smooth tab transitions.
+                    </p>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Counter */}
+          <section id="counter" className="space-y-6">
+            <div>
+              <h2 className="text-xl font-semibold mb-4">Counter</h2>
+              <p className="text-muted-foreground mb-6">
+                An interactive counter component with animated increment/decrement buttons and sliding number transitions.
+              </p>
+              
+              <div className="border rounded-lg bg-card">
+                <div className="h-80 md:h-96 flex flex-col gap-8 items-center justify-center p-8">
+                  
+                  {/* Counter Demo */}
+                  <div className="flex flex-col items-center gap-4">
+                    <h3 className="text-sm font-medium text-muted-foreground">Interactive Counter</h3>
+                    <CounterDemo />
+                  </div>
+
+                  {/* Description */}
+                  <div className="text-center max-w-md">
+                    <p className="text-sm text-muted-foreground">
+                      Features smooth number transitions, hover/tap animations, and customizable styling.
+                    </p>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Cursor */}
+          <section id="cursor" className="space-y-6">
+            <div>
+              <h2 className="text-xl font-semibold mb-4">Cursor</h2>
+              <p className="text-muted-foreground mb-6">
+                Custom cursor effects with provider context, smooth animations, and follow behaviors for enhanced user interactions.
+              </p>
+              
+              <div className="border rounded-lg bg-card">
+                <div className="h-80 md:h-96 flex flex-col gap-8 items-center justify-center p-8">
+                  
+                  {/* Cursor Demo */}
+                  <div className="flex flex-col items-center gap-4 w-full">
+                    <h3 className="text-sm font-medium text-muted-foreground">Custom Cursor Effects</h3>
+                    <CursorProvider className="w-full max-w-md h-48 border-2 border-dashed border-muted-foreground/30 rounded-lg flex items-center justify-center bg-muted/20">
+                      <Cursor>
+                        <div className="w-4 h-4 bg-primary rounded-full" />
+                      </Cursor>
+                      <CursorFollow align="bottom-right">
+                        <div className="px-2 py-1 bg-background border rounded-md text-xs shadow-lg">
+                          Custom Cursor
+                        </div>
+                      </CursorFollow>
+                      <div className="text-center">
+                        <p className="text-sm text-muted-foreground">Move your mouse here</p>
+                        <p className="text-xs text-muted-foreground mt-1">Custom cursor with follow effect</p>
+                      </div>
+                    </CursorProvider>
+                  </div>
+
+                  {/* Description */}
+                  <div className="text-center max-w-md">
+                    <p className="text-sm text-muted-foreground">
+                      Provider-based cursor system with customizable effects, smooth spring animations, and positioning control.
+                    </p>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Files */}
+          <section id="files" className="space-y-6">
+            <div>
+              <h2 className="text-xl font-semibold mb-4">Files</h2>
+              <p className="text-muted-foreground mb-6">
+                A file explorer component with expandable folders, file icons, and smooth animations for displaying file structures.
+              </p>
+              
+              <div className="border rounded-lg bg-card">
+                <div className="h-80 md:h-96 flex flex-col gap-8 items-center justify-center p-8">
+                  
+                  {/* Files Demo */}
+                  <div className="flex flex-col items-center gap-4 w-full">
+                    <h3 className="text-sm font-medium text-muted-foreground">File Explorer</h3>
+                    <div className="w-full max-w-sm h-64">
+                      <Files defaultOpen={['src', 'components']}>
+                        <Folder name="src">
+                          <Folder name="components">
+                            <Folder name="ui">
+                              <File name="button.tsx" />
+                              <File name="input.tsx" />
+                              <File name="card.tsx" />
+                            </Folder>
+                            <File name="header.tsx" />
+                            <File name="footer.tsx" />
+                          </Folder>
+                          <Folder name="pages">
+                            <File name="index.tsx" />
+                            <File name="about.tsx" />
+                          </Folder>
+                          <File name="app.tsx" />
+                        </Folder>
+                        <Folder name="public">
+                          <File name="favicon.ico" />
+                          <File name="logo.png" />
+                        </Folder>
+                        <File name="package.json" />
+                        <File name="README.md" />
+                      </Files>
+                    </div>
+                  </div>
+
+                  {/* Description */}
+                  <div className="text-center max-w-md">
+                    <p className="text-sm text-muted-foreground">
+                      Interactive file tree with expand/collapse animations, hover effects, and customizable folder/file icons.
+                    </p>
                   </div>
 
                 </div>

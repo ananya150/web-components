@@ -265,6 +265,18 @@ export function getNpmDependencies(component: Component): string[] {
     case 'Icon':
       dependencies.push('motion');
       break;
+    case 'CodeTabs':
+      dependencies.push('motion', 'shiki', 'next-themes', '@radix-ui/react-tabs');
+      break;
+    case 'Counter':
+      dependencies.push('motion', 'react-use-measure', '@radix-ui/react-slot', 'class-variance-authority');
+      break;
+    case 'Cursor':
+      dependencies.push('motion');
+      break;
+    case 'Files':
+      dependencies.push('motion', '@radix-ui/react-accordion', 'lucide-react');
+      break;
     default:
       break;
   }

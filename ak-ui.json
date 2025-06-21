@@ -520,6 +520,81 @@
     "version": "1.0.0"
   },
   {
+    "name": "CodeTabs",
+    "category": "custom",
+    "description": "A tabbed code viewer with syntax highlighting, copy functionality, and theme support for displaying multiple code snippets.",
+    "cli": "npx @notacoder15/ak-ui-cli add code-tabs",
+    "import": "@/components/ui/custom/code-tabs",
+    "export": "CodeTabs",
+    "dependencies": ["@/components/ui/common/tabs", "@/components/ui/buttons/copy"],
+    "props": {
+      "codes": "Record<string, string>",
+      "lang": { "type": "string", "default": "bash" },
+      "themes": { "type": "object", "default": { "light": "github-light", "dark": "github-dark" } },
+      "copyButton": { "type": "boolean", "default": true },
+      "onCopy": "function",
+      "defaultValue": "string",
+      "value": "string",
+      "onValueChange": "function"
+    },
+    "example": "<CodeTabs codes={{ npm: 'npm install', yarn: 'yarn add' }} lang=\"bash\" copyButton={true} />",
+    "version": "1.0.0"
+  },
+  {
+    "name": "Counter",
+    "category": "custom",
+    "description": "An interactive counter component with animated increment/decrement buttons and sliding number transitions.",
+    "cli": "npx @notacoder15/ak-ui-cli add counter",
+    "import": "@/components/ui/custom/counter",
+    "export": "Counter",
+    "dependencies": ["@/components/ui/text/sliding-number", "@/components/ui/buttons/button"],
+    "props": {
+      "number": "number",
+      "setNumber": "function",
+      "slidingNumberProps": "object",
+      "buttonProps": "object",
+      "transition": "object"
+    },
+    "example": "<Counter number={count} setNumber={setCount} />",
+    "version": "1.0.0"
+  },
+  {
+    "name": "Cursor",
+    "category": "custom",
+    "description": "Custom cursor effects with provider context, smooth animations, and follow behaviors for enhanced user interactions.",
+    "cli": "npx @notacoder15/ak-ui-cli add cursor",
+    "import": "@/components/ui/custom/cursor",
+    "export": "CursorProvider, Cursor, CursorFollow, useCursor",
+    "props": {
+      "children": "React.ReactNode",
+      "sideOffset": { "type": "number", "default": 15 },
+      "align": { "type": "enum", "values": ["top", "top-left", "top-right", "bottom", "bottom-left", "bottom-right", "left", "right", "center"], "default": "bottom-right" },
+      "transition": "object"
+    },
+    "example": "<CursorProvider><Cursor><div className=\"w-4 h-4 bg-primary rounded-full\" /></Cursor><CursorFollow>Follow element</CursorFollow></CursorProvider>",
+    "version": "1.0.0"
+  },
+  {
+    "name": "Files",
+    "category": "custom",
+    "description": "A file explorer component with expandable folders, file icons, and smooth animations for displaying file structures.",
+    "cli": "npx @notacoder15/ak-ui-cli add files",
+    "import": "@/components/ui/custom/files",
+    "export": "Files, Folder, File",
+    "dependencies": ["@/components/ui/common/accordion", "@/components/ui/effects/motion-highlight"],
+    "props": {
+      "children": "React.ReactNode",
+      "activeClassName": "string",
+      "defaultOpen": "string[]",
+      "open": "string[]",
+      "onOpenChange": "function",
+      "name": "string",
+      "sideComponent": "React.ReactNode"
+    },
+    "example": "<Files><Folder name=\"src\"><File name=\"app.tsx\" /></Folder></Files>",
+    "version": "1.0.0"
+  },
+  {
     "name": "Icon",
     "category": "icons",
     "description": "A comprehensive icon animation system with hover, tap, and custom animation support. Provides animated icon wrappers with Motion.js integration.",
